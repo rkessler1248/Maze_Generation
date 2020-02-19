@@ -2,8 +2,7 @@
 
 C# Maze Generation Algorithms.
 
-Inspirations/References:
-
-Mazes for Programmers by Jamis Buck
-
+Inspirations/References:<br/>
+=============================
+Mazes for Programmers by Jamis Buck<br/>
 http://www.astrolog.org/labyrnth/algrithm.htm
