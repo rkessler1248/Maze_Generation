@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using MazeGeneration.Abstractions;
-using MazeGeneration.Abstractions.Algorithms;
+using MazeGeneration.Abstractions.Algorithms.Creators;
 using MazeGeneration.Utility;
 
-namespace MazeGeneration.Algorithms
+namespace MazeGeneration.Algorithms.Creators
 {
     public static class Sidewinder
     {

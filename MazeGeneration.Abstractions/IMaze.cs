@@ -14,6 +14,7 @@ namespace MazeGeneration.Abstractions
         TCollection Cells { get; }
         TCell this[ params int[] keys ] { get; set; }
         TCell this[ TCoordinates coordinates ] { get; set; }
+        TCell this[ string id ] { get; set; }
         void Reset( bool linkAllCells = false );
 
         void ForEachCell( Action<TCoordinates> action );

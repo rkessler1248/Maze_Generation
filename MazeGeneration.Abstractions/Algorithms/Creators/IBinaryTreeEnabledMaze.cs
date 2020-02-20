@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace MazeGeneration.Abstractions.Algorithms
+namespace MazeGeneration.Abstractions.Algorithms.Creators
 {
     public interface IBinaryTreeEnabledMaze<TCell, TCoordinates, out TCollection> : IMaze<TCell, TCoordinates, TCollection> where TCell : ICell<TCoordinates>
                                                                                                                             where TCoordinates : ICoordinates

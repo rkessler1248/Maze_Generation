@@ -1,5 +1,6 @@
 ﻿using System;
 using MazeGeneration.Algorithms;
+using MazeGeneration.Algorithms.Creators;
 using MazeGeneration.Models.Orthogonal;
 
 namespace MazeGeneration

@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace MazeGeneration.Abstractions.Algorithms
+namespace MazeGeneration.Abstractions.Algorithms.Creators
 {
     public interface ISidewinderEnabledMaze<TCell, TCoordinates, out TCollection> : IMaze<TCell, TCoordinates, TCollection> where TCell : ICell<TCoordinates>
                                                                                                                             where TCoordinates : ICoordinates

@@ -6,9 +6,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeGeneration.Models", "Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeGeneration.Abstractions", "MazeGeneration.Abstractions\MazeGeneration.Abstractions.csproj", "{61F73A63-6E4D-4122-B326-8C71808ADE98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeGeneration.Algorithms", "MazeGeneration.Algorithms\MazeGeneration.Algorithms.csproj", "{FCA31642-0B17-4670-B06D-B22804BAEAFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeGeneration.Algorithms.Creators", "MazeGeneration.Algorithms.Creators\MazeGeneration.Algorithms.Creators.csproj", "{FCA31642-0B17-4670-B06D-B22804BAEAFA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeGeneration.Utility", "MazeGeneration.Utility\MazeGeneration.Utility.csproj", "{6CF318E4-C3E9-420E-8ECE-524B01A504D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeGeneration.Algorithms.Solvers", "MazeGeneration.Algorithms.Solvers\MazeGeneration.Algorithms.Solvers.csproj", "{3A0F08E5-B76A-4C31-A2DA-28B643E91EFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +38,9 @@ Global
 		{6CF318E4-C3E9-420E-8ECE-524B01A504D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CF318E4-C3E9-420E-8ECE-524B01A504D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CF318E4-C3E9-420E-8ECE-524B01A504D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A0F08E5-B76A-4C31-A2DA-28B643E91EFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A0F08E5-B76A-4C31-A2DA-28B643E91EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A0F08E5-B76A-4C31-A2DA-28B643E91EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A0F08E5-B76A-4C31-A2DA-28B643E91EFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

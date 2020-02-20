@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MazeGeneration.Algorithms\MazeGeneration.Algorithms.csproj" />
+      <ProjectReference Include="..\MazeGeneration.Algorithms.Creators\MazeGeneration.Algorithms.Creators.csproj" />
     </ItemGroup>
 
 </Project>
