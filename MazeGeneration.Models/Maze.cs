@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Abstractions.Algorithms.Creators;
+using MazeGeneration.Utility;
 
 namespace MazeGeneration.Models
 {
@@ -21,6 +22,19 @@ namespace MazeGeneration.Models
 
         public int Dimensions { get; }
         public IList<int> DimensionSizes { get; }
+        public int Size
+        {
+            get
+            {
+                var product = 1;
+                for ( int dimension = 0; dimension < Dimensions; ++dimension )
+                {
+                    product *= DimensionSizes[ dimension ];
+                }
+
+                return product;
+            }
+        }
 
         public abstract TCollection Cells { get; }
 
@@ -55,6 +69,17 @@ namespace MazeGeneration.Models
         }
 
         public abstract void ForEachCell( Action<TCoordinates> action );
+
+        public TCell GetRandomCell()
+        {
+            var key = new int[ Dimensions ];
+            for ( int i = 0; i < Dimensions; ++i )
+            {
+                key[ i ] = RandomNumberGenerator.NextInt( 0, DimensionSizes[ 0 ] - 1 );
+            }
+
+            return this[ key ];
+        }
 
         public abstract string Print();
 

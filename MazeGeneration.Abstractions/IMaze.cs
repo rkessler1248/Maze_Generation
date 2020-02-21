@@ -10,6 +10,7 @@ namespace MazeGeneration.Abstractions
     {
         int Dimensions { get; }
         IList<int> DimensionSizes { get; }
+        int Size { get; }
 
         TCollection Cells { get; }
         TCell this[ params int[] keys ] { get; set; }
@@ -18,6 +19,8 @@ namespace MazeGeneration.Abstractions
         void Reset( bool linkAllCells = false );
 
         void ForEachCell( Action<TCoordinates> action );
+
+        TCell GetRandomCell();
         string Print();
     }
 }

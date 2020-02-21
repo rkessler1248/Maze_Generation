@@ -9,7 +9,7 @@ namespace MazeGeneration
     {
         private static void Main( string[] args )
         {
-            var maze = new OrthogonalMaze2D( 20, 20 );
+            var maze = new OrthogonalMaze2D( 10, 10 );
             
             maze.GenerateBinaryTreeMaze();
             Console.Write( "Binary Tree Maze\n" );
@@ -17,6 +17,10 @@ namespace MazeGeneration
             
             Console.Write( "Sidewinder Maze\n" );
             maze.GenerateSidewinderMaze();
+            Console.WriteLine( maze.Print() );
+            
+            Console.Write( "Aldous-Broder Maze\n" );
+            maze.GenerateAldousBroderMaze();
             Console.WriteLine( maze.Print() );
         }
     }
