@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Linq;
 using MazeGeneration.Abstractions;
-using MazeGeneration.Utility;
+using RNG = MazeGeneration.Utility.RandomNumberGenerator;
 
 namespace MazeGeneration.Algorithms.Creators
 {
@@ -19,7 +19,7 @@ namespace MazeGeneration.Algorithms.Creators
             while ( unvisitedCellCount > 0 )
             {
                 var neighbors = current.Neighbors.Values.ToList();
-                var chosenNeighborIdx = RandomNumberGenerator.NextInt( 0, neighbors.Count - 1 );
+                var chosenNeighborIdx = RNG.NextInt( 0, neighbors.Count );
                 var chosenNeighbor = neighbors[ chosenNeighborIdx ];
 
                 if ( chosenNeighbor.Links.Count == 0 )

@@ -12,7 +12,7 @@ namespace MazeGeneration.Utility
             var bytes = new byte[ 256 ];
             Provider.GetBytes( bytes );
             var random = Math.Abs( BitConverter.ToInt32( bytes, 0 ) );
-            return random % ( maximum - minimum + 1 ) + minimum;
+            return random % ( maximum - minimum ) + minimum;
         }
     }
 }

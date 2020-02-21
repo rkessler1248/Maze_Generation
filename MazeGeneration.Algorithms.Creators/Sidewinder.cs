@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Abstractions.Algorithms.Creators;
-using MazeGeneration.Utility;
+using RNG = MazeGeneration.Utility.RandomNumberGenerator;
 
 namespace MazeGeneration.Algorithms.Creators
 {
@@ -19,11 +19,11 @@ namespace MazeGeneration.Algorithms.Creators
             maze.ForEachCell( coordinates =>
             {
                 run.Add( maze[ coordinates ] );
-                var shouldCloseOut = maze.CloseOutRun( coordinates, RandomNumberGenerator.NextInt( 0, 1 ) == 0 );
+                var shouldCloseOut = maze.CloseOutRun( coordinates, RNG.NextInt( 0, 2 ) == 0 );
 
                 if ( shouldCloseOut )
                 {
-                    var randomCell = run[ RandomNumberGenerator.NextInt( 0, run.Count - 1 ) ];
+                    var randomCell = run[ RNG.NextInt( 0, run.Count ) ];
                     maze.LinkCellToCloseOutNeighbor( randomCell );
                     run.Clear();
                 }

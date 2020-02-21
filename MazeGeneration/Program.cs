@@ -22,6 +22,10 @@ namespace MazeGeneration
             Console.Write( "Aldous-Broder Maze\n" );
             maze.GenerateAldousBroderMaze();
             Console.WriteLine( maze.Print() );
+            
+            Console.Write( "Wilson's Maze\n" );
+            maze.GenerateWilsonsMaze();
+            Console.WriteLine( maze.Print() );
         }
     }
 }
