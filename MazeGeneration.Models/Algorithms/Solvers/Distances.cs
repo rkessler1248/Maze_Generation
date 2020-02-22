@@ -34,14 +34,17 @@ namespace MazeGeneration.Models.Algorithms.Solvers
             }
         }
 
-        public IList<string> Keys() => Values.Keys.ToList();
+        public IList<string> Keys()
+        {
+            return Values.Keys.ToList();
+        }
 
         public IDistances<TCell, TCoordinates> PathTo( TCell goal )
         {
             var current = goal;
             var breadcrumbs = new Distances<TCell, TCoordinates>( Root )
             {
-                [ current.Id ] = Values[ current.Id ], 
+                [ current.Id ] = Values[ current.Id ],
                 Cells = { [ current.Id ] = Cells[ current.Id ] }
             };
 

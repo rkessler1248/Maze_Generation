@@ -64,7 +64,6 @@ namespace MazeGeneration.Algorithms.Creators
                     var neighbor = visitedNeighbors[ RNG.NextInt( 0, visitedNeighbors.Count ) ];
                     current.LinkTo( neighbor );
                 }
-                
             } );
             return current;
         }

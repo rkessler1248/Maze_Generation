@@ -6,7 +6,7 @@ namespace MazeGeneration.Utility
         {
             return obj is null;
         }
-        
+
         public static bool IsNotNull( this object obj )
         {
             return !obj.IsNull();

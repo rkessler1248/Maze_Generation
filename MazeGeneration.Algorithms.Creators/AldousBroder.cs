@@ -15,7 +15,7 @@ namespace MazeGeneration.Algorithms.Creators
         {
             maze.Reset();
 
-            int unvisitedCellCount = maze.Size - 1;
+            var unvisitedCellCount = maze.Size - 1;
             var current = maze.GetRandomCell();
             while ( unvisitedCellCount > 0 )
             {

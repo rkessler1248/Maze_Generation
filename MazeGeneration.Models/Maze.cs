@@ -22,12 +22,13 @@ namespace MazeGeneration.Models
 
         public int Dimensions { get; }
         public IList<int> DimensionSizes { get; }
+
         public int Size
         {
             get
             {
                 var product = 1;
-                for ( int dimension = 0; dimension < Dimensions; ++dimension )
+                for ( var dimension = 0; dimension < Dimensions; ++dimension )
                 {
                     product *= DimensionSizes[ dimension ];
                 }
@@ -74,7 +75,7 @@ namespace MazeGeneration.Models
         public TCell GetRandomCell()
         {
             var key = new int[ Dimensions ];
-            for ( int i = 0; i < Dimensions; ++i )
+            for ( var i = 0; i < Dimensions; ++i )
             {
                 key[ i ] = RNG.NextInt( 0, DimensionSizes[ i ] );
             }

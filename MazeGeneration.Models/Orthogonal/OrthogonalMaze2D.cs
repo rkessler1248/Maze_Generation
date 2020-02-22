@@ -132,10 +132,10 @@ namespace MazeGeneration.Models.Orthogonal
         public override bool CloseOutRun( IOrthogonalCoordinates2D coordinates, bool randomResult )
         {
             var cell = this[ coordinates ];
-            
+
             var atEasternBoundary = cell.EasternNeighbor.IsNull();
             var atNorthernBoundary = cell.NorthernNeighbor.IsNull();
-            
+
             return atEasternBoundary || !atNorthernBoundary && randomResult;
         }
 

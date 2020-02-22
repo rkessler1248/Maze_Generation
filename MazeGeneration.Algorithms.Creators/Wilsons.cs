@@ -14,7 +14,7 @@ namespace MazeGeneration.Algorithms.Creators
             where TCollection : ICollection
         {
             maze.Reset();
-            
+
             var unvisitedCells = Initialize( maze );
             while ( unvisitedCells.Any() )
             {
@@ -24,8 +24,8 @@ namespace MazeGeneration.Algorithms.Creators
         }
 
         private static Dictionary<string, TCell> Initialize<TCell, TCoordinates, TCollection>( IMaze<TCell, TCoordinates, TCollection> maze )
-            where TCell : ICell<TCoordinates> 
-            where TCoordinates : ICoordinates 
+            where TCell : ICell<TCoordinates>
+            where TCoordinates : ICoordinates
             where TCollection : ICollection
         {
             var unvisitedCells = new Dictionary<string, TCell>();
@@ -33,12 +33,12 @@ namespace MazeGeneration.Algorithms.Creators
 
             var first = unvisitedCells.Values.ElementAt( RNG.NextInt( 0, unvisitedCells.Count ) );
             unvisitedCells.Remove( first.Id );
-            
+
             return unvisitedCells;
         }
 
         private static List<TCell> PerformLoopErasedWalk<TCell, TCoordinates>( Dictionary<string, TCell> unvisitedCells )
-            where TCell : ICell<TCoordinates> 
+            where TCell : ICell<TCoordinates>
             where TCoordinates : ICoordinates
         {
             var cell = unvisitedCells.Values.ElementAt( RNG.NextInt( 0, unvisitedCells.Count ) );
@@ -59,12 +59,12 @@ namespace MazeGeneration.Algorithms.Creators
 
             return path;
         }
-        
+
         private static void CarvePath<TCell, TCoordinates>( IList<TCell> path, IDictionary<string, TCell> unvisitedCells )
-            where TCell : ICell<TCoordinates> 
+            where TCell : ICell<TCoordinates>
             where TCoordinates : ICoordinates
         {
-            for ( int cell = 0; cell < path.Count - 1; ++cell )
+            for ( var cell = 0; cell < path.Count - 1; ++cell )
             {
                 var first = path[ cell ];
                 var second = path[ cell + 1 ];
