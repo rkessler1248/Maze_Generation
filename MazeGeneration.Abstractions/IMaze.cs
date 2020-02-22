@@ -16,14 +16,13 @@ namespace MazeGeneration.Abstractions
         TCell this[ params int[] keys ] { get; set; }
         TCell this[ TCoordinates coordinates ] { get; set; }
         TCell this[ string id ] { get; set; }
-        void Reset( bool linkAllCells = false );
+        void Reset( bool linkAllCells = false, IList<TCoordinates> mask = null );
 
         void ForEachCell( Action<TCoordinates> action );
         void ForEachCell( Action<TCell> action );
 
         TCell GetRandomCell();
         IList<TCell> DeadEnds();
-        void ApplyMask( IList<TCoordinates> mask );
         string Print();
     }
 }

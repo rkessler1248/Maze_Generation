@@ -15,11 +15,7 @@ namespace MazeGeneration.Algorithms.Creators
             where TCoordinates : ICoordinates
             where TCollection : ICollection
         {
-            maze.Reset();
-            if ( mask.IsNotNull() )
-            {
-                maze.ApplyMask( mask );
-            }
+            maze.Reset( mask: mask );
 
             var run = new List<TCell>();
             maze.ForEachCell( coordinates =>

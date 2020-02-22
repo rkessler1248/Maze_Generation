@@ -63,10 +63,14 @@ namespace MazeGeneration.Models
             set => this[ BreakId( id ) ] = value;
         }
 
-        public void Reset( bool linkAllCells = false )
+        public void Reset( bool linkAllCells = false, IList<TCoordinates> mask = null )
         {
             PrepareMaze();
             ConfigureCells( linkAllCells );
+            if ( mask.IsNotNull() )
+            {
+                ApplyMask( mask );
+            }
         }
 
         public abstract void ForEachCell( Action<TCoordinates> action );
@@ -84,14 +88,6 @@ namespace MazeGeneration.Models
                         .ToList();
         }
 
-        public void ApplyMask( IList<TCoordinates> mask )
-        {
-            foreach ( var coordinates in mask )
-            {
-                this[ coordinates ] = null;
-            }
-        }
-
         public abstract string Print();
 
         public abstract IList<TCell> NeighborsToChooseFrom( TCoordinates coordinates );
@@ -101,7 +97,7 @@ namespace MazeGeneration.Models
         public abstract void LinkCellToContinueNeighbor( TCell cell );
 
         protected abstract void PrepareMaze();
-        protected abstract void ConfigureCells( bool linkAllCells );
+        protected abstract void ConfigureCells( bool linkAllCells = false );
 
         protected abstract bool KeysAreValid( int[] keys );
         protected abstract TCell GetCell( int[] keys );
@@ -111,6 +107,14 @@ namespace MazeGeneration.Models
         {
             var idParts = cellId.Split( new[] { Cell<TCoordinates>.IdSeparator }, StringSplitOptions.None );
             return idParts.Select( int.Parse ).ToArray();
+        }
+        
+        private void ApplyMask( IList<TCoordinates> mask )
+        {
+            foreach ( var coordinates in mask )
+            {
+                this[ coordinates ] = null;
+            }
         }
     }
 }
