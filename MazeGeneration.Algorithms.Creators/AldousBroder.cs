@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using MazeGeneration.Abstractions;
+using MazeGeneration.Utility;
 using RNG = MazeGeneration.Utility.RandomNumberGenerator;
 
 namespace MazeGeneration.Algorithms.Creators
@@ -22,7 +23,7 @@ namespace MazeGeneration.Algorithms.Creators
                 var chosenNeighborIdx = RNG.NextInt( 0, neighbors.Count );
                 var chosenNeighbor = neighbors[ chosenNeighborIdx ];
 
-                if ( chosenNeighbor.Links.Count == 0 )
+                if ( chosenNeighbor.Links.IsEmpty() )
                 {
                     current.LinkTo( chosenNeighbor );
                     --unvisitedCellCount;

@@ -19,8 +19,10 @@ namespace MazeGeneration.Abstractions
         void Reset( bool linkAllCells = false );
 
         void ForEachCell( Action<TCoordinates> action );
+        void ForEachCell( Action<TCell> action );
 
         TCell GetRandomCell();
+        IList<TCell> DeadEnds();
         string Print();
     }
 }

@@ -3,6 +3,7 @@ using System.Linq;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Abstractions.Algorithms.Solvers;
 using MazeGeneration.Models.Algorithms.Solvers;
+using MazeGeneration.Utility;
 
 namespace MazeGeneration.Models
 {
@@ -20,12 +21,12 @@ namespace MazeGeneration.Models
 
         public bool IsNeighbor( ICell<TCoordinates> cell )
         {
-            return !( cell is null ) && Neighbors.ContainsKey( cell.Id );
+            return cell.IsNotNull() && Neighbors.ContainsKey( cell.Id );
         }
 
         public virtual void AddNeighbor( ICell<TCoordinates> cell, bool addBidirectionally = true )
         {
-            if ( cell is null || cell == this || IsNeighbor( cell ) )
+            if ( cell.IsNull() || cell == this || IsNeighbor( cell ) )
             {
                 return;
             }
@@ -42,7 +43,7 @@ namespace MazeGeneration.Models
 
         public virtual void RemoveNeighbor( ICell<TCoordinates> cell, bool removeBidirectionally = true )
         {
-            if ( cell is null || cell == this || !IsNeighbor( cell ) )
+            if ( cell.IsNull() || cell == this || !IsNeighbor( cell ) )
             {
                 return;
             }
@@ -58,12 +59,12 @@ namespace MazeGeneration.Models
 
         public virtual bool IsLinkedTo( ICell<TCoordinates> cell )
         {
-            return !( cell is null ) && Links.ContainsKey( cell.Id );
+            return cell.IsNotNull() && Links.ContainsKey( cell.Id );
         }
 
         public virtual void LinkTo( ICell<TCoordinates> cell, bool linkBidirectionally = true )
         {
-            if ( cell is null || cell == this || IsLinkedTo( cell ) )
+            if ( cell.IsNull() || cell == this || IsLinkedTo( cell ) )
             {
                 return;
             }
@@ -80,7 +81,7 @@ namespace MazeGeneration.Models
 
         public virtual void UnlinkFrom( ICell<TCoordinates> cell, bool unlinkBidirectionally = true )
         {
-            if ( cell is null || cell == this || !IsLinkedTo( cell ) )
+            if ( cell.IsNull() || cell == this || !IsLinkedTo( cell ) )
             {
                 return;
             }

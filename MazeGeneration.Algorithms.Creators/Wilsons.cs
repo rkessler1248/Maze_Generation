@@ -16,7 +16,7 @@ namespace MazeGeneration.Algorithms.Creators
             maze.Reset();
             
             var unvisitedCells = Initialize( maze );
-            while ( unvisitedCells.Count > 0 )
+            while ( unvisitedCells.Any() )
             {
                 var path = PerformLoopErasedWalk<TCell, TCoordinates>( unvisitedCells );
                 CarvePath<TCell, TCoordinates>( path, unvisitedCells );
@@ -29,7 +29,7 @@ namespace MazeGeneration.Algorithms.Creators
             where TCollection : ICollection
         {
             var unvisitedCells = new Dictionary<string, TCell>();
-            maze.ForEachCell( coordinates => unvisitedCells.Add( maze[ coordinates ].Id, maze[ coordinates ] ) );
+            maze.ForEachCell( cell => unvisitedCells.Add( cell.Id, cell ) );
 
             var first = unvisitedCells.Values.ElementAt( RNG.NextInt( 0, unvisitedCells.Count ) );
             unvisitedCells.Remove( first.Id );

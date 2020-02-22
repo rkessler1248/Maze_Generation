@@ -1,5 +1,4 @@
 ﻿using System;
-using MazeGeneration.Algorithms;
 using MazeGeneration.Algorithms.Creators;
 using MazeGeneration.Models.Orthogonal;
 
@@ -25,6 +24,10 @@ namespace MazeGeneration
             
             Console.Write( "Wilson's Maze\n" );
             maze.GenerateWilsonsMaze();
+            Console.WriteLine( maze.Print() );
+            
+            Console.Write( "Hunt And Kill Maze\n" );
+            maze.GenerateHuntAndKillMaze();
             Console.WriteLine( maze.Print() );
         }
     }

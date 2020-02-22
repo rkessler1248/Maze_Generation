@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MazeGeneration.Abstractions;
+using MazeGeneration.Utility;
 
 namespace MazeGeneration.Models
 {
@@ -66,7 +67,7 @@ namespace MazeGeneration.Models
         public override int GetHashCode()
         {
             var hash = 0;
-            if ( Values is null )
+            if ( Values.IsNull() )
             {
                 return hash;
             }

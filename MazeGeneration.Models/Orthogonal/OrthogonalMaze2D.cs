@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using MazeGeneration.Abstractions.Orthogonal;
+using MazeGeneration.Utility;
 
 namespace MazeGeneration.Models.Orthogonal
 {
@@ -23,6 +24,15 @@ namespace MazeGeneration.Models.Orthogonal
             for ( var column = 0; column < NumberOfColumns; ++column )
             {
                 action( this[ row, column ].Coordinates );
+            }
+        }
+
+        public override void ForEachCell( Action<IOrthogonalCell2D> action )
+        {
+            for ( var row = 0; row < NumberOfRows; ++row )
+            for ( var column = 0; column < NumberOfColumns; ++column )
+            {
+                action( this[ row, column ] );
             }
         }
 
@@ -123,8 +133,8 @@ namespace MazeGeneration.Models.Orthogonal
         {
             var cell = this[ coordinates ];
             
-            var atEasternBoundary = cell.EasternNeighbor is null;
-            var atNorthernBoundary = cell.NorthernNeighbor is null;
+            var atEasternBoundary = cell.EasternNeighbor.IsNull();
+            var atNorthernBoundary = cell.NorthernNeighbor.IsNull();
             
             return atEasternBoundary || !atNorthernBoundary && randomResult;
         }
@@ -136,7 +146,7 @@ namespace MazeGeneration.Models.Orthogonal
 
         public override void LinkCellToCloseOutNeighbor( IOrthogonalCell2D cell )
         {
-            if ( cell.NorthernNeighbor is null )
+            if ( cell.NorthernNeighbor.IsNull() )
             {
                 return;
             }

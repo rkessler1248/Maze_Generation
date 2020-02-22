@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Abstractions.Algorithms.Creators;
+using MazeGeneration.Utility;
 using RNG = MazeGeneration.Utility.RandomNumberGenerator;
 
 namespace MazeGeneration.Algorithms.Creators
@@ -18,9 +19,9 @@ namespace MazeGeneration.Algorithms.Creators
             maze.ForEachCell( coordinates =>
             {
                 var neighbors = maze.NeighborsToChooseFrom( coordinates )
-                                    .Where( cell => !( cell is null ) )
+                                    .Where( cell => cell.IsNotNull() )
                                     .ToList();
-                if ( neighbors.Count > 0 )
+                if ( neighbors.Any() )
                 {
                     maze[ coordinates ].LinkTo( neighbors[ RNG.NextInt( 0, neighbors.Count ) ] );
                 }

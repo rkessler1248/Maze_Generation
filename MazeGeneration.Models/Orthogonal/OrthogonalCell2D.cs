@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Abstractions.Orthogonal;
+using MazeGeneration.Utility;
 
 namespace MazeGeneration.Models.Orthogonal
 {
@@ -56,7 +57,7 @@ namespace MazeGeneration.Models.Orthogonal
 
         public void SetNeighbor( IOrthogonalCell2D cell )
         {
-            if ( cell is null || cell == this )
+            if ( cell.IsNull() || cell == this )
             {
                 return;
             }
@@ -81,7 +82,7 @@ namespace MazeGeneration.Models.Orthogonal
 
         public void UnsetNeighbor( IOrthogonalCell2D cell )
         {
-            if ( cell is null || cell == this )
+            if ( cell.IsNull() || cell == this )
             {
                 return;
             }

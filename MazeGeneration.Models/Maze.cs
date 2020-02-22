@@ -12,7 +12,7 @@ namespace MazeGeneration.Models
                                                                    ISidewinderEnabledMaze<TCell, TCoordinates, TCollection>
         where TCell : class, ICell<TCoordinates>
         where TCoordinates : ICoordinates
-        where TCollection : ICollection
+        where TCollection : class, ICollection
     {
         protected Maze( int dimensions, IList<int> dimensionSizes )
         {
@@ -69,6 +69,7 @@ namespace MazeGeneration.Models
         }
 
         public abstract void ForEachCell( Action<TCoordinates> action );
+        public abstract void ForEachCell( Action<TCell> action );
 
         public TCell GetRandomCell()
         {
@@ -79,6 +80,13 @@ namespace MazeGeneration.Models
             }
 
             return this[ key ];
+        }
+
+        public IList<TCell> DeadEnds()
+        {
+            return Cells.Cast<TCell>()
+                        .Where( cell => cell.Links.Count == 1 )
+                        .ToList();
         }
 
         public abstract string Print();
