@@ -3,7 +3,6 @@ using System.Linq;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Abstractions.Algorithms.Creators;
 using MazeGeneration.Utility;
-using RNG = MazeGeneration.Utility.RandomNumberGenerator;
 
 namespace MazeGeneration.Algorithms.Creators
 {
@@ -23,7 +22,7 @@ namespace MazeGeneration.Algorithms.Creators
                                     .ToList();
                 if ( neighbors.Any() )
                 {
-                    maze[ coordinates ].LinkTo( neighbors[ RNG.NextInt( 0, neighbors.Count ) ] );
+                    maze[ coordinates ].LinkTo( neighbors.GetRandom() );
                 }
             } );
         }

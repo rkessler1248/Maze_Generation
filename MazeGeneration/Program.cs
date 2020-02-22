@@ -29,6 +29,10 @@ namespace MazeGeneration
             Console.Write( "Hunt And Kill Maze\n" );
             maze.GenerateHuntAndKillMaze();
             Console.WriteLine( maze.Print() );
+
+            Console.Write( "Recursive Backtracker Maze\n" );
+            maze.GenerateRecursiveBacktrackerMaze();
+            Console.WriteLine( maze.Print() );
         }
     }
 }

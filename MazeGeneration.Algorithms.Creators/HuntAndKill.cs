@@ -2,7 +2,6 @@ using System.Collections;
 using System.Linq;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Utility;
-using RNG = MazeGeneration.Utility.RandomNumberGenerator;
 
 namespace MazeGeneration.Algorithms.Creators
 {
@@ -34,7 +33,7 @@ namespace MazeGeneration.Algorithms.Creators
 
             if ( unvisitedNeighbors.Any() )
             {
-                var neighbor = unvisitedNeighbors[ RNG.NextInt( 0, unvisitedNeighbors.Count ) ];
+                var neighbor = unvisitedNeighbors.GetRandom();
                 current.LinkTo( neighbor );
                 current = ( TCell ) neighbor;
             }
@@ -61,7 +60,7 @@ namespace MazeGeneration.Algorithms.Creators
                 if ( cell.Links.IsEmpty() && visitedNeighbors.Any() )
                 {
                     current = cell;
-                    var neighbor = visitedNeighbors[ RNG.NextInt( 0, visitedNeighbors.Count ) ];
+                    var neighbor = visitedNeighbors.GetRandom();
                     current.LinkTo( neighbor );
                 }
             } );

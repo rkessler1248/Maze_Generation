@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Abstractions.Algorithms.Creators;
+using MazeGeneration.Utility;
 using RNG = MazeGeneration.Utility.RandomNumberGenerator;
 
 namespace MazeGeneration.Algorithms.Creators
@@ -23,7 +24,7 @@ namespace MazeGeneration.Algorithms.Creators
 
                 if ( shouldCloseOut )
                 {
-                    var randomCell = run[ RNG.NextInt( 0, run.Count ) ];
+                    var randomCell = run.GetRandom();
                     maze.LinkCellToCloseOutNeighbor( randomCell );
                     run.Clear();
                 }

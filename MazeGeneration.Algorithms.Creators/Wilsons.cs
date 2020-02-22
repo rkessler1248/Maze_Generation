@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MazeGeneration.Abstractions;
-using RNG = MazeGeneration.Utility.RandomNumberGenerator;
+using MazeGeneration.Utility;
 
 namespace MazeGeneration.Algorithms.Creators
 {
@@ -31,7 +31,7 @@ namespace MazeGeneration.Algorithms.Creators
             var unvisitedCells = new Dictionary<string, TCell>();
             maze.ForEachCell( cell => unvisitedCells.Add( cell.Id, cell ) );
 
-            var first = unvisitedCells.Values.ElementAt( RNG.NextInt( 0, unvisitedCells.Count ) );
+            var first = unvisitedCells.Values.GetRandom();
             unvisitedCells.Remove( first.Id );
 
             return unvisitedCells;
@@ -41,11 +41,11 @@ namespace MazeGeneration.Algorithms.Creators
             where TCell : ICell<TCoordinates>
             where TCoordinates : ICoordinates
         {
-            var cell = unvisitedCells.Values.ElementAt( RNG.NextInt( 0, unvisitedCells.Count ) );
+            var cell = unvisitedCells.Values.GetRandom();
             var path = new List<TCell> { cell };
             while ( unvisitedCells.ContainsKey( cell.Id ) )
             {
-                cell = ( TCell ) cell.Neighbors.Values.ElementAt( RNG.NextInt( 0, cell.Neighbors.Count ) );
+                cell = ( TCell ) cell.Neighbors.Values.GetRandom();
                 var pathIdx = path.IndexOf( cell );
                 if ( pathIdx == -1 )
                 {

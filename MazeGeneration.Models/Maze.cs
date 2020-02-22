@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Abstractions.Algorithms.Creators;
-using RNG = MazeGeneration.Utility.RandomNumberGenerator;
+using MazeGeneration.Utility;
 
 namespace MazeGeneration.Models
 {
@@ -74,13 +74,7 @@ namespace MazeGeneration.Models
 
         public TCell GetRandomCell()
         {
-            var key = new int[ Dimensions ];
-            for ( var i = 0; i < Dimensions; ++i )
-            {
-                key[ i ] = RNG.NextInt( 0, DimensionSizes[ i ] );
-            }
-
-            return this[ key ];
+            return Cells.GetRandom<TCell>();
         }
 
         public IList<TCell> DeadEnds()
