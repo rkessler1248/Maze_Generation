@@ -8,12 +8,16 @@ namespace MazeGeneration.Algorithms.Creators
 {
     public static class RecursiveBacktracker
     {
-        public static void GenerateRecursiveBacktrackerMaze<TCell, TCoordinates, TCollection>( this IMaze<TCell, TCoordinates, TCollection> maze )
+        public static void GenerateRecursiveBacktrackerMaze<TCell, TCoordinates, TCollection>( this IMaze<TCell, TCoordinates, TCollection> maze, IList<TCoordinates> mask = null )
             where TCell : class, ICell<TCoordinates>
             where TCoordinates : ICoordinates
             where TCollection : ICollection
         {
             maze.Reset();
+            if ( mask.IsNotNull() )
+            {
+                maze.ApplyMask( mask );
+            }
 
             var stack = new Stack<TCell>();
             stack.Push( maze.GetRandomCell() );

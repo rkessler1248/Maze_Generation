@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Abstractions.Algorithms.Creators;
@@ -8,12 +9,17 @@ namespace MazeGeneration.Algorithms.Creators
 {
     public static class BinaryTree
     {
-        public static void GenerateBinaryTreeMaze<TCell, TCoordinates, TCollection>( this IBinaryTreeEnabledMaze<TCell, TCoordinates, TCollection> maze )
+        public static void GenerateBinaryTreeMaze<TCell, TCoordinates, TCollection>( this IBinaryTreeEnabledMaze<TCell, TCoordinates, TCollection> maze, 
+                                                                                     IList<TCoordinates> mask = null )
             where TCell : class, ICell<TCoordinates>
             where TCoordinates : ICoordinates
             where TCollection : ICollection
         {
             maze.Reset();
+            if ( mask.IsNotNull() )
+            {
+                maze.ApplyMask( mask );
+            }
 
             maze.ForEachCell( coordinates =>
             {

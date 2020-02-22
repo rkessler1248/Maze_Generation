@@ -84,6 +84,14 @@ namespace MazeGeneration.Models
                         .ToList();
         }
 
+        public void ApplyMask( IList<TCoordinates> mask )
+        {
+            foreach ( var coordinates in mask )
+            {
+                this[ coordinates ] = null;
+            }
+        }
+
         public abstract string Print();
 
         public abstract IList<TCell> NeighborsToChooseFrom( TCoordinates coordinates );

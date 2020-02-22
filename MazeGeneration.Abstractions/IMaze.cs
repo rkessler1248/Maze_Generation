@@ -23,6 +23,7 @@ namespace MazeGeneration.Abstractions
 
         TCell GetRandomCell();
         IList<TCell> DeadEnds();
+        void ApplyMask( IList<TCoordinates> mask );
         string Print();
     }
 }

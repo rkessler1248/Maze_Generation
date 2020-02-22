@@ -8,13 +8,17 @@ namespace MazeGeneration.Algorithms.Creators
 {
     public static class Wilsons
     {
-        public static void GenerateWilsonsMaze<TCell, TCoordinates, TCollection>( this IMaze<TCell, TCoordinates, TCollection> maze )
+        public static void GenerateWilsonsMaze<TCell, TCoordinates, TCollection>( this IMaze<TCell, TCoordinates, TCollection> maze, IList<TCoordinates> mask = null )
             where TCell : ICell<TCoordinates>
             where TCoordinates : ICoordinates
             where TCollection : ICollection
         {
             maze.Reset();
-
+            if ( mask.IsNotNull() )
+            {
+                maze.ApplyMask( mask );
+            }
+            
             var unvisitedCells = Initialize( maze );
             while ( unvisitedCells.Any() )
             {

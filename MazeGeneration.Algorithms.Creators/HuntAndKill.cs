@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Utility;
@@ -7,12 +8,16 @@ namespace MazeGeneration.Algorithms.Creators
 {
     public static class HuntAndKill
     {
-        public static void GenerateHuntAndKillMaze<TCell, TCoordinates, TCollection>( this IMaze<TCell, TCoordinates, TCollection> maze )
+        public static void GenerateHuntAndKillMaze<TCell, TCoordinates, TCollection>( this IMaze<TCell, TCoordinates, TCollection> maze, IList<TCoordinates> mask = null )
             where TCell : class, ICell<TCoordinates>
             where TCoordinates : ICoordinates
             where TCollection : ICollection
         {
             maze.Reset();
+            if ( mask.IsNotNull() )
+            {
+                maze.ApplyMask( mask );
+            }
 
             var current = maze.GetRandomCell();
             while ( current.IsNotNull() )

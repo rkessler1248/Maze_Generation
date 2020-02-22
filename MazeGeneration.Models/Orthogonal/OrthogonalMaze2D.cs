@@ -54,8 +54,8 @@ namespace MazeGeneration.Models.Orthogonal
                 for ( var column = 0; column < NumberOfColumns; ++column )
                 {
                     var cell = Cells[ row, column ];
-                    var eastBoundary = cell.IsLinkedTo( cell.EasternNeighbor ) ? " " : "|";
-                    top += $"   {eastBoundary}";
+                    var eastBoundary = cell.IsNotNull() && cell.IsLinkedTo( cell.EasternNeighbor ) ? " " : "|";
+                    top += $" {( cell.IsNull() ? "X" : " " )} {eastBoundary}";
 
                     var southBoundary = cell.IsLinkedTo( cell.SouthernNeighbor ) ? "   " : "---";
                     bottom += $"{southBoundary}+";
