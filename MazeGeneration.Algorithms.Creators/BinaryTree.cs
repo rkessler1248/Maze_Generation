@@ -9,7 +9,7 @@ namespace MazeGeneration.Algorithms.Creators
 {
     public static class BinaryTree
     {
-        public static void GenerateBinaryTreeMaze<TCell, TCoordinates, TCollection>( this IBinaryTreeEnabledMaze<TCell, TCoordinates, TCollection> maze, 
+        public static void GenerateBinaryTreeMaze<TCell, TCoordinates, TCollection>( this IBinaryTreeEnabledMaze<TCell, TCoordinates, TCollection> maze,
                                                                                      IList<TCoordinates> mask = null )
             where TCell : class, ICell<TCoordinates>
             where TCoordinates : ICoordinates

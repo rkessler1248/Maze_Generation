@@ -14,7 +14,7 @@ namespace MazeGeneration.Algorithms.Creators
             where TCollection : ICollection
         {
             maze.Reset( mask: mask );
-            
+
             var unvisitedCells = Initialize( maze );
             while ( unvisitedCells.Any() )
             {

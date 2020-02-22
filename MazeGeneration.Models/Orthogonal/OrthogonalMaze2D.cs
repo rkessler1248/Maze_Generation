@@ -23,6 +23,11 @@ namespace MazeGeneration.Models.Orthogonal
             for ( var row = 0; row < NumberOfRows; ++row )
             for ( var column = 0; column < NumberOfColumns; ++column )
             {
+                if ( this[ row, column ].IsNull() )
+                {
+                    continue;
+                }
+
                 action( this[ row, column ].Coordinates );
             }
         }
@@ -32,6 +37,11 @@ namespace MazeGeneration.Models.Orthogonal
             for ( var row = 0; row < NumberOfRows; ++row )
             for ( var column = 0; column < NumberOfColumns; ++column )
             {
+                if ( this[ row, column ].IsNull() )
+                {
+                    continue;
+                }
+
                 action( this[ row, column ] );
             }
         }
@@ -57,7 +67,7 @@ namespace MazeGeneration.Models.Orthogonal
                     var eastBoundary = cell.IsNotNull() && cell.IsLinkedTo( cell.EasternNeighbor ) ? " " : "|";
                     top += $" {( cell.IsNull() ? "X" : " " )} {eastBoundary}";
 
-                    var southBoundary = cell.IsLinkedTo( cell.SouthernNeighbor ) ? "   " : "---";
+                    var southBoundary = cell.IsNotNull() && cell.IsLinkedTo( cell.SouthernNeighbor ) ? "   " : "---";
                     bottom += $"{southBoundary}+";
                 }
 
@@ -80,7 +90,7 @@ namespace MazeGeneration.Models.Orthogonal
             }
         }
 
-        protected override void ConfigureCells( bool linkAllCells )
+        protected override void ConfigureCells( bool linkAllCells = false )
         {
             for ( var row = 0; row < NumberOfRows; ++row )
             for ( var column = 0; column < NumberOfColumns; ++column )

@@ -33,7 +33,7 @@ namespace MazeGeneration.Models
                     product *= DimensionSizes[ dimension ];
                 }
 
-                return product;
+                return product - Cells.Cast<object>().Count( o => o.IsNull() );
             }
         }
 
@@ -84,7 +84,7 @@ namespace MazeGeneration.Models
         public IList<TCell> DeadEnds()
         {
             return Cells.Cast<TCell>()
-                        .Where( cell => cell.Links.Count == 1 )
+                        .Where( cell => cell.IsNotNull() && cell.Links.Count == 1 )
                         .ToList();
         }
 
@@ -108,12 +108,30 @@ namespace MazeGeneration.Models
             var idParts = cellId.Split( new[] { Cell<TCoordinates>.IdSeparator }, StringSplitOptions.None );
             return idParts.Select( int.Parse ).ToArray();
         }
-        
+
         private void ApplyMask( IList<TCoordinates> mask )
         {
+            var removedCellIds = new List<string>();
             foreach ( var coordinates in mask )
             {
+                removedCellIds.Add( this[ coordinates ].Id );
                 this[ coordinates ] = null;
+            }
+
+            foreach ( TCell cell in Cells )
+            {
+                if ( cell is null )
+                {
+                    continue;
+                }
+
+                foreach ( var removedCellId in removedCellIds )
+                {
+                    if ( cell.Neighbors.ContainsKey( removedCellId ) )
+                    {
+                        cell.Neighbors.Remove( removedCellId );
+                    }
+                }
             }
         }
     }

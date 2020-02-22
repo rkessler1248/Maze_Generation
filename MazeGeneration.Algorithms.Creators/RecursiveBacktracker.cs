@@ -8,7 +8,8 @@ namespace MazeGeneration.Algorithms.Creators
 {
     public static class RecursiveBacktracker
     {
-        public static void GenerateRecursiveBacktrackerMaze<TCell, TCoordinates, TCollection>( this IMaze<TCell, TCoordinates, TCollection> maze, IList<TCoordinates> mask = null )
+        public static void GenerateRecursiveBacktrackerMaze<TCell, TCoordinates, TCollection>( this IMaze<TCell, TCoordinates, TCollection> maze,
+                                                                                               IList<TCoordinates> mask = null )
             where TCell : class, ICell<TCoordinates>
             where TCoordinates : ICoordinates
             where TCollection : ICollection
@@ -25,7 +26,7 @@ namespace MazeGeneration.Algorithms.Creators
                                                 .Values
                                                 .Where( neighbor => neighbor.Links.IsEmpty() )
                                                 .ToList();
-                
+
                 if ( unvisitedNeighbors.IsEmpty() )
                 {
                     stack.Pop();
