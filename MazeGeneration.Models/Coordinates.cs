@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MazeGeneration.Abstractions;
-using MazeGeneration.Utility;
+using MazeGeneration.Utility.Extensions;
 
 namespace MazeGeneration.Models
 {

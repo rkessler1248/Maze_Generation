@@ -6,8 +6,9 @@ using MazeGeneration.Abstractions.Algorithms.Solvers;
 
 namespace MazeGeneration.Models.Algorithms.Solvers
 {
-    public class Distances<TCell, TCoordinates> : IDistances<TCell, TCoordinates> where TCell : class, ICell<TCoordinates>
-                                                                                  where TCoordinates : ICoordinates
+    public class Distances<TCell, TCoordinates> : IDistances<TCell, TCoordinates>
+        where TCell : class, ICell<TCoordinates>
+        where TCoordinates : class, ICoordinates
     {
         public Distances( TCell root )
         {

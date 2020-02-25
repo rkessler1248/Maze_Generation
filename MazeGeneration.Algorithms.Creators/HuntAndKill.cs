@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MazeGeneration.Abstractions;
-using MazeGeneration.Utility;
+using MazeGeneration.Extensions;
+using MazeGeneration.Extensions.Mazes;
+using MazeGeneration.Utility.Extensions;
 
 namespace MazeGeneration.Algorithms.Creators
 {
@@ -10,8 +12,8 @@ namespace MazeGeneration.Algorithms.Creators
     {
         public static void GenerateHuntAndKillMaze<TCell, TCoordinates, TCollection>( this IMaze<TCell, TCoordinates, TCollection> maze, IList<TCoordinates> mask = null )
             where TCell : class, ICell<TCoordinates>
-            where TCoordinates : ICoordinates
-            where TCollection : ICollection
+            where TCoordinates : class, ICoordinates
+            where TCollection : class, ICollection
         {
             maze.Reset( mask: mask );
 
@@ -25,7 +27,7 @@ namespace MazeGeneration.Algorithms.Creators
 
         private static TCell Kill<TCell, TCoordinates>( TCell current )
             where TCell : class, ICell<TCoordinates>
-            where TCoordinates : ICoordinates
+            where TCoordinates : class, ICoordinates
         {
             var unvisitedNeighbors = current.Neighbors
                                             .Values
@@ -48,8 +50,8 @@ namespace MazeGeneration.Algorithms.Creators
 
         private static TCell Hunt<TCell, TCoordinates, TCollection>( IMaze<TCell, TCoordinates, TCollection> maze, TCell current )
             where TCell : class, ICell<TCoordinates>
-            where TCoordinates : ICoordinates
-            where TCollection : ICollection
+            where TCoordinates : class, ICoordinates
+            where TCollection : class, ICollection
         {
             maze.ForEachCell( cell =>
             {

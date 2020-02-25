@@ -3,15 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MazeGeneration.Abstractions;
-using MazeGeneration.Abstractions.Algorithms.Creators;
-using MazeGeneration.Utility;
+using MazeGeneration.Utility.Extensions;
 
 namespace MazeGeneration.Models
 {
-    public abstract class Maze<TCell, TCoordinates, TCollection> : IBinaryTreeEnabledMaze<TCell, TCoordinates, TCollection>,
-                                                                   ISidewinderEnabledMaze<TCell, TCoordinates, TCollection>
+    public abstract class Maze<TCell, TCoordinates, TCollection>
         where TCell : class, ICell<TCoordinates>
-        where TCoordinates : ICoordinates
+        where TCoordinates : class, ICoordinates
         where TCollection : class, ICollection
     {
         protected Maze( int dimensions, IList<int> dimensionSizes )
@@ -76,25 +74,7 @@ namespace MazeGeneration.Models
         public abstract void ForEachCell( Action<TCoordinates> action );
         public abstract void ForEachCell( Action<TCell> action );
 
-        public TCell GetRandomCell()
-        {
-            return Cells.GetRandom<TCell>();
-        }
-
-        public IList<TCell> DeadEnds()
-        {
-            return Cells.Cast<TCell>()
-                        .Where( cell => cell.IsNotNull() && cell.Links.Count == 1 )
-                        .ToList();
-        }
-
         public abstract string Print();
-
-        public abstract IList<TCell> NeighborsToChooseFrom( TCoordinates coordinates );
-
-        public abstract bool CloseOutRun( TCoordinates coordinates, bool randomResult );
-        public abstract void LinkCellToCloseOutNeighbor( TCell cell );
-        public abstract void LinkCellToContinueNeighbor( TCell cell );
 
         protected abstract void PrepareMaze();
         protected abstract void ConfigureCells( bool linkAllCells = false );

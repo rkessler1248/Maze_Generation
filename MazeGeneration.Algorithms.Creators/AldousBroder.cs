@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MazeGeneration.Abstractions;
-using MazeGeneration.Utility;
+using MazeGeneration.Extensions;
+using MazeGeneration.Extensions.Mazes;
+using MazeGeneration.Utility.Extensions;
 
 namespace MazeGeneration.Algorithms.Creators
 {
     public static class AldousBroder
     {
         public static void GenerateAldousBroderMaze<TCell, TCoordinates, TCollection>( this IMaze<TCell, TCoordinates, TCollection> maze, IList<TCoordinates> mask = null )
-            where TCell : ICell<TCoordinates>
-            where TCoordinates : ICoordinates
-            where TCollection : ICollection
+            where TCell : class, ICell<TCoordinates>
+            where TCoordinates : class, ICoordinates
+            where TCollection : class, ICollection
         {
             maze.Reset( mask: mask );
 

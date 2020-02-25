@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace MazeGeneration.Abstractions
 {
-    public interface ICell<TCoordinates> where TCoordinates : ICoordinates
+    public interface ICell<TCoordinates> where TCoordinates : class, ICoordinates
     {
         string Id { get; }
         TCoordinates Coordinates { get; }

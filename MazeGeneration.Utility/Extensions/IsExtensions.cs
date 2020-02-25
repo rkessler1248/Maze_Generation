@@ -1,4 +1,4 @@
-namespace MazeGeneration.Utility
+namespace MazeGeneration.Utility.Extensions
 {
     public static class IsExtensions
     {

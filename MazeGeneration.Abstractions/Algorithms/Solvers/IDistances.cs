@@ -2,8 +2,9 @@ using System.Collections.Generic;
 
 namespace MazeGeneration.Abstractions.Algorithms.Solvers
 {
-    public interface IDistances<TCell, TCoordinates> where TCell : ICell<TCoordinates>
-                                                     where TCoordinates : ICoordinates
+    public interface IDistances<TCell, TCoordinates>
+        where TCell : class, ICell<TCoordinates>
+        where TCoordinates : class, ICoordinates
     {
         TCell Root { get; }
         IDictionary<string, int> Values { get; }

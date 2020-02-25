@@ -2,13 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MazeGeneration.Utility
+namespace MazeGeneration.Utility.Extensions
 {
     public static class CollectionExtensions
     {
         public static bool IsEmpty<T>( this ICollection<T> collection )
         {
+            if ( collection.IsNull() )
+            {
+                return true;
+            }
+            
             return collection.Count == 0;
+        }
+
+        public static T GetRandom<T>( this IEnumerable<T> collection )
+        {
+            var enumerated = collection.ToList();
+            return enumerated.GetRandom();
         }
 
         public static T GetRandom<T>( this ICollection<T> collection )

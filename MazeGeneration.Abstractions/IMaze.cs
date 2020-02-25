@@ -4,9 +4,10 @@ using System.Collections.Generic;
 
 namespace MazeGeneration.Abstractions
 {
-    public interface IMaze<TCell, TCoordinates, out TCollection> where TCell : ICell<TCoordinates>
-                                                                 where TCoordinates : ICoordinates
-                                                                 where TCollection : ICollection
+    public interface IMaze<TCell, TCoordinates, out TCollection>
+        where TCell : class, ICell<TCoordinates>
+        where TCoordinates : class, ICoordinates
+        where TCollection : class, ICollection
     {
         int Dimensions { get; }
         IList<int> DimensionSizes { get; }
@@ -21,8 +22,6 @@ namespace MazeGeneration.Abstractions
         void ForEachCell( Action<TCoordinates> action );
         void ForEachCell( Action<TCell> action );
 
-        TCell GetRandomCell();
-        IList<TCell> DeadEnds();
         string Print();
     }
 }

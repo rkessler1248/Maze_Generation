@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MazeGeneration.Abstractions;
-using MazeGeneration.Utility;
+using MazeGeneration.Utility.Extensions;
 
 namespace MazeGeneration.Algorithms.Creators
 {
     public static class Wilsons
     {
         public static void GenerateWilsonsMaze<TCell, TCoordinates, TCollection>( this IMaze<TCell, TCoordinates, TCollection> maze, IList<TCoordinates> mask = null )
-            where TCell : ICell<TCoordinates>
-            where TCoordinates : ICoordinates
-            where TCollection : ICollection
+            where TCell : class, ICell<TCoordinates>
+            where TCoordinates : class, ICoordinates
+            where TCollection : class, ICollection
         {
             maze.Reset( mask: mask );
 
@@ -24,9 +24,9 @@ namespace MazeGeneration.Algorithms.Creators
         }
 
         private static Dictionary<string, TCell> Initialize<TCell, TCoordinates, TCollection>( IMaze<TCell, TCoordinates, TCollection> maze )
-            where TCell : ICell<TCoordinates>
-            where TCoordinates : ICoordinates
-            where TCollection : ICollection
+            where TCell : class, ICell<TCoordinates>
+            where TCoordinates : class, ICoordinates
+            where TCollection : class, ICollection
         {
             var unvisitedCells = new Dictionary<string, TCell>();
             maze.ForEachCell( cell => unvisitedCells.Add( cell.Id, cell ) );
@@ -38,8 +38,8 @@ namespace MazeGeneration.Algorithms.Creators
         }
 
         private static List<TCell> PerformLoopErasedWalk<TCell, TCoordinates>( Dictionary<string, TCell> unvisitedCells )
-            where TCell : ICell<TCoordinates>
-            where TCoordinates : ICoordinates
+            where TCell : class, ICell<TCoordinates>
+            where TCoordinates : class, ICoordinates
         {
             var cell = unvisitedCells.Values.GetRandom();
             var path = new List<TCell> { cell };
@@ -61,8 +61,8 @@ namespace MazeGeneration.Algorithms.Creators
         }
 
         private static void CarvePath<TCell, TCoordinates>( IList<TCell> path, IDictionary<string, TCell> unvisitedCells )
-            where TCell : ICell<TCoordinates>
-            where TCoordinates : ICoordinates
+            where TCell : class, ICell<TCoordinates>
+            where TCoordinates : class, ICoordinates
         {
             for ( var cell = 0; cell < path.Count - 1; ++cell )
             {

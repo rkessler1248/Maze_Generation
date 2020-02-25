@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using MazeGeneration.Abstractions.Orthogonal;
-using MazeGeneration.Utility;
+using MazeGeneration.Utility.Extensions;
 
 namespace MazeGeneration.Models.Orthogonal
 {
@@ -131,37 +131,6 @@ namespace MazeGeneration.Models.Orthogonal
                     }
                 }
             }
-        }
-
-        public override IList<IOrthogonalCell2D> NeighborsToChooseFrom( IOrthogonalCoordinates2D coordinates )
-        {
-            var cell = this[ coordinates.Row, coordinates.Column ];
-            return new List<IOrthogonalCell2D> { cell.NorthernNeighbor, cell.EasternNeighbor };
-        }
-
-        public override bool CloseOutRun( IOrthogonalCoordinates2D coordinates, bool randomResult )
-        {
-            var cell = this[ coordinates ];
-
-            var atEasternBoundary = cell.EasternNeighbor.IsNull();
-            var atNorthernBoundary = cell.NorthernNeighbor.IsNull();
-
-            return atEasternBoundary || !atNorthernBoundary && randomResult;
-        }
-
-        public override void LinkCellToContinueNeighbor( IOrthogonalCell2D cell )
-        {
-            cell.LinkTo( cell.EasternNeighbor );
-        }
-
-        public override void LinkCellToCloseOutNeighbor( IOrthogonalCell2D cell )
-        {
-            if ( cell.NorthernNeighbor.IsNull() )
-            {
-                return;
-            }
-
-            cell.LinkTo( cell.NorthernNeighbor );
         }
 
         protected override bool KeysAreValid( int[] keys )

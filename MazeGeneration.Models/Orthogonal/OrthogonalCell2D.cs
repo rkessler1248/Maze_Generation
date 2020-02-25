@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using MazeGeneration.Abstractions;
 using MazeGeneration.Abstractions.Orthogonal;
-using MazeGeneration.Utility;
+using MazeGeneration.Utility.Extensions;
 
 namespace MazeGeneration.Models.Orthogonal
 {
