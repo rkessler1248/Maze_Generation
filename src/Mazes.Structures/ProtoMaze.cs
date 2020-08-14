@@ -59,5 +59,17 @@ namespace Mazes.Structures
         {
             return cell.Row == 0 || cell.Row == Rows - 1 || cell.Column == 0 || cell.Column == Columns - 1;
         }
+
+        public Maze Complete()
+        {
+            var completeCells = new Cell[ Rows, Columns ];
+            for ( int row = 0; row < Rows; ++row )
+            for ( int column = 0; column < Columns; ++column )
+            {
+                completeCells[ row, column ] = _cells[ row, column ].Complete();
+            }
+
+            return new Maze( Rows, Columns, completeCells );
+        }
     }
 }
