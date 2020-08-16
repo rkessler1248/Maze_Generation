@@ -8,7 +8,7 @@ namespace Mazes.Structures.Tests
         [Trait( "Category", "Unit" )]
         public void Test_2D_Orthogonal_Maze_Cells()
         {
-            var maze = new Maze( 4, 4 );
+            Maze maze = new Maze( 4, 4 );
 
             Assert.Equal( 4, maze.Columns );
             Assert.Equal( 4, maze.Rows );
@@ -26,7 +26,7 @@ namespace Mazes.Structures.Tests
         [Trait( "Category", "Unit" )]
         public void Test_2D_Orthogonal_Maze_CellNeighbors()
         {
-            var maze = new Maze( 4, 4 );
+            Maze maze = new Maze( 4, 4 );
 
             for ( int row = 0; row < maze.Rows; ++row )
             for ( int column = 0; column < maze.Columns; ++column )

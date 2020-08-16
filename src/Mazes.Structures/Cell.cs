@@ -5,7 +5,8 @@ namespace Mazes.Structures
 {
     public class Cell
     {
-        public string Id => $"{Row.ToString()}-{Column.ToString()}";
+        public string Id => CreateId( Row, Column );
+
         public int Row { get; }
         public int Column { get; }
 
@@ -46,9 +47,16 @@ namespace Mazes.Structures
             return _neighbors.ContainsKey( other.Id ) && _neighbors[ other.Id ].Equals( other );
         }
 
+        public Cell GetNeighbor( in int row, in int column )
+        {
+            string neighborId = CreateId( row, column );
+            return _neighbors.ContainsKey( neighborId ) ? _neighbors[ neighborId ] : null;
+        }
+
         public bool Equals( Cell other )
         {
-            return Row == other.Row
+            return !( other is null )
+                   && Row == other.Row
                    && Column == other.Column
                    && Equals( _links, other._links )
                    && Equals( _links, other._links );
@@ -66,12 +74,27 @@ namespace Mazes.Structures
 
         public static bool operator ==( Cell lhs, Cell rhs )
         {
-            return lhs?.Equals( rhs ) ?? false;
+            if ( lhs is null && rhs is null )
+            {
+                return true;
+            }
+
+            if ( lhs is null || rhs is null )
+            {
+                return false;
+            }
+
+            return lhs.Equals( rhs );
         }
 
         public static bool operator !=( Cell lhs, Cell rhs )
         {
             return !( lhs == rhs );
+        }
+
+        private static string CreateId( in int row, in int column )
+        {
+            return $"{row.ToString()}-{column.ToString()}";
         }
     }
 }
