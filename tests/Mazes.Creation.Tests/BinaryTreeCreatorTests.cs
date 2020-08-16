@@ -6,9 +6,8 @@ namespace Mazes.Creation.Tests {
         [Fact]
         [Trait( "Category", "Unit" )]
         public void Test_BinaryTreeCreator_2D_OrthogonalMaze() {
-            const int randomSeed = 0;
             Maze maze = new Maze( 10, 10 );
-            BinaryTreeCreator creator = new BinaryTreeCreator( maze, randomSeed );
+            BinaryTreeCreator creator = new BinaryTreeCreator( maze );
 
             creator.Carve();
             int row = maze.Rows - 1;
@@ -34,9 +33,8 @@ namespace Mazes.Creation.Tests {
         [Fact]
         [Trait( "Category", "Unit" )]
         public void Test_BinaryTreeCreator_2D_OrthogonalMaze_ChooseLink() {
-            const int randomSeed = 0;
             Maze maze = new Maze( 3, 3 );
-            BinaryTreeCreator creator = new BinaryTreeCreator( maze, randomSeed );
+            BinaryTreeCreator creator = new BinaryTreeCreator( maze );
 
             Cell link = creator.ChooseLink( maze[ 0, 0 ] );
             Assert.Contains( link, new[] { maze[ 1, 0 ], maze[ 0, 1 ] } );

@@ -6,9 +6,9 @@ namespace Mazes.Creation {
         private readonly Random _random;
         private readonly Maze _maze;
 
-        public BinaryTreeCreator( Maze maze, int? randomSeed = null ) {
+        public BinaryTreeCreator( Maze maze ) {
             _maze = maze;
-            _random = new Random( randomSeed ?? DateTime.UtcNow.Millisecond );
+            _random = new Random( DateTime.UtcNow.Millisecond );
         }
 
         public void Carve() {
