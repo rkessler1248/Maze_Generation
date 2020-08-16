@@ -8,8 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DD01F9B8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mazes.Structures", "src\Mazes.Structures\Mazes.Structures.csproj", "{AF7FF0C0-FF37-4602-8BFB-137AA4A94458}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mazes.Samples", "samples\Mazes.Samples\Mazes.Samples.csproj", "{438DB784-80D9-42CA-99D6-A7B4EAE571B2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mazes.Structures.Tests", "tests\Mazes.Structures.Tests\Mazes.Structures.Tests.csproj", "{659871E4-F538-4499-BB06-D3BE75BE82B5}"
 EndProject
 Global
@@ -22,10 +20,6 @@ Global
 		{AF7FF0C0-FF37-4602-8BFB-137AA4A94458}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF7FF0C0-FF37-4602-8BFB-137AA4A94458}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF7FF0C0-FF37-4602-8BFB-137AA4A94458}.Release|Any CPU.Build.0 = Release|Any CPU
-		{438DB784-80D9-42CA-99D6-A7B4EAE571B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{438DB784-80D9-42CA-99D6-A7B4EAE571B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{438DB784-80D9-42CA-99D6-A7B4EAE571B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{438DB784-80D9-42CA-99D6-A7B4EAE571B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{659871E4-F538-4499-BB06-D3BE75BE82B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{659871E4-F538-4499-BB06-D3BE75BE82B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{659871E4-F538-4499-BB06-D3BE75BE82B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,7 +27,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AF7FF0C0-FF37-4602-8BFB-137AA4A94458} = {57AC0E52-4F71-4D33-98AA-15EF506E92AD}
-		{438DB784-80D9-42CA-99D6-A7B4EAE571B2} = {5D5CAFBF-338F-4068-A085-1F32AAE89CA5}
 		{659871E4-F538-4499-BB06-D3BE75BE82B5} = {DD01F9B8-4455-4D8D-8E43-C32B35E105FD}
 	EndGlobalSection
 EndGlobal
