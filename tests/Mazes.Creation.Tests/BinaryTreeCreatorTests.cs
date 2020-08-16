@@ -6,7 +6,7 @@ namespace Mazes.Creation.Tests {
         [Fact]
         [Trait( "Category", "Unit" )]
         public void Test_BinaryTreeCreator_2D_OrthogonalMaze() {
-            Maze maze = new Maze( 10, 10 );
+            Maze maze = new Maze( 3, 3 );
             BinaryTreeCreator creator = new BinaryTreeCreator( maze );
 
             creator.Carve();
