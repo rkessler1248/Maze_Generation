@@ -1,14 +1,11 @@
 using Mazes.Structures;
 using Xunit;
 
-namespace Mazes.Creation.Tests
-{
-    public class BinaryTreeCreatorTests
-    {
+namespace Mazes.Creation.Tests {
+    public class BinaryTreeCreatorTests {
         [Fact]
         [Trait( "Category", "Unit" )]
-        public void Test_BinaryTreeCreator_2D_OrthogonalMaze()
-        {
+        public void Test_BinaryTreeCreator_2D_OrthogonalMaze() {
             const int randomSeed = 0;
             Maze maze = new Maze( 10, 10 );
             BinaryTreeCreator creator = new BinaryTreeCreator( maze, randomSeed );
@@ -16,8 +13,7 @@ namespace Mazes.Creation.Tests
             creator.Carve();
             int row = maze.Rows - 1;
             int column;
-            for ( column = 0; column < maze.Columns - 1; ++column )
-            {
+            for ( column = 0; column < maze.Columns - 1; ++column ) {
                 Cell current = maze[ row, column ];
                 Cell next = maze[ row, column + 1 ];
 
@@ -26,8 +22,7 @@ namespace Mazes.Creation.Tests
             }
 
             column = maze.Columns - 1;
-            for ( row = 0; row < maze.Rows - 1; ++row )
-            {
+            for ( row = 0; row < maze.Rows - 1; ++row ) {
                 Cell current = maze[ row, column ];
                 Cell next = maze[ row + 1, column ];
 
@@ -38,8 +33,7 @@ namespace Mazes.Creation.Tests
 
         [Fact]
         [Trait( "Category", "Unit" )]
-        public void Test_BinaryTreeCreator_2D_OrthogonalMaze_ChooseLink()
-        {
+        public void Test_BinaryTreeCreator_2D_OrthogonalMaze_ChooseLink() {
             const int randomSeed = 0;
             Maze maze = new Maze( 3, 3 );
             BinaryTreeCreator creator = new BinaryTreeCreator( maze, randomSeed );
