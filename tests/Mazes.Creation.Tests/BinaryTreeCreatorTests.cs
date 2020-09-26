@@ -28,7 +28,7 @@ namespace Mazes.Creation.Tests
 
         [Fact]
         [Trait( "Category", "Unit" )]
-        public void Test_BinaryTreeCreator_ChooseLink_WesternBorder()
+        public void Test_BinaryTreeCreator_ChooseLink_EasternBorder()
         {
             Maze maze = new Maze( 3, 3 );
             BinaryTreeCreator creator = new BinaryTreeCreator();
