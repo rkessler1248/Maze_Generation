@@ -26,7 +26,7 @@ namespace Mazes.Structures
             {
                 return;
             }
-
+            
             _neighbors.Add( other );
             other.SetNeighbor( this );
         }
