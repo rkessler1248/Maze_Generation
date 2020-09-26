@@ -1,82 +1,49 @@
-using System;
 using System.Collections.Generic;
 
-namespace Mazes.Structures {
-    public class Cell {
-        public string Id => CreateId( Row, Column );
+namespace Mazes.Structures
+{
+    public class Cell
+    {
+        private readonly Coordinate _coordinates;
 
-        public int Row { get; }
-        public int Column { get; }
+        private readonly HashSet<Cell> _links;
+        private readonly HashSet<Cell> _neighbors;
 
-        private readonly IDictionary<string, Cell> _neighbors = new Dictionary<string, Cell>();
-        private readonly IDictionary<string, Cell> _links = new Dictionary<string, Cell>();
+        public Cell( in Coordinate coordinates ) => ( _coordinates, _links, _neighbors ) = ( coordinates, new HashSet<Cell>(), new HashSet<Cell>() );
 
-        public Cell( int row, int column ) {
-            Row = row;
-            Column = column;
-        }
+        public Cell( in int column, in int row )
+            : this( new Coordinate( column, row ) ) { }
 
-        public void LinkTo( Cell other ) {
-            if ( this != other && !IsLinkedTo( other ) ) {
-                _links[ other.Id ] = other;
-                other.LinkTo( this );
-            }
-        }
+        public int Column => _coordinates[ 0 ];
+        public int Row => _coordinates[ 1 ];
 
-        public void MakeNeighbors( Cell other ) {
-            if ( this != other && !IsNeighborOf( other ) ) {
-                _neighbors[ other.Id ] = other;
-                other.MakeNeighbors( this );
-            }
-        }
+        public IReadOnlyCollection<Cell> Links() => _links;
+        public IReadOnlyCollection<Cell> Neighbors() => _neighbors;
 
-        public bool IsLinkedTo( Cell other ) {
-            return _links.ContainsKey( other.Id ) && _links[ other.Id ].Equals( other );
-        }
-
-        public bool IsNeighborOf( Cell other ) {
-            return _neighbors.ContainsKey( other.Id ) && _neighbors[ other.Id ].Equals( other );
-        }
-
-        public Cell GetNeighbor( in int row, in int column ) {
-            string neighborId = CreateId( row, column );
-            return _neighbors.ContainsKey( neighborId ) ? _neighbors[ neighborId ] : null;
-        }
-
-        public bool Equals( Cell other ) {
-            return !( other is null )
-                   && Row == other.Row
-                   && Column == other.Column
-                   && Equals( _links, other._links )
-                   && Equals( _links, other._links );
-        }
-
-        public override bool Equals( object obj ) {
-            return obj is Cell other && Equals( other );
-        }
-
-        public override int GetHashCode() {
-            return HashCode.Combine( Row, Column, _links, _neighbors );
-        }
-
-        public static bool operator ==( Cell lhs, Cell rhs ) {
-            if ( lhs is null && rhs is null ) {
-                return true;
+        public void SetNeighbor( Cell other )
+        {
+            if ( this == other || _coordinates == other._coordinates || IsNeighbor( other ) )
+            {
+                return;
             }
 
-            if ( lhs is null || rhs is null ) {
-                return false;
+            _neighbors.Add( other );
+            other.SetNeighbor( this );
+        }
+
+        public bool IsNeighbor( Cell other ) => _neighbors.Contains( other );
+
+        public void LinkTo( Cell other )
+        {
+            if ( this == other || _coordinates == other._coordinates || IsLinkedTo( other ) )
+            {
+                return;
             }
 
-            return lhs.Equals( rhs );
+            _links.Add( other );
+            other.LinkTo( this );
         }
 
-        public static bool operator !=( Cell lhs, Cell rhs ) {
-            return !( lhs == rhs );
-        }
-
-        private static string CreateId( in int row, in int column ) {
-            return $"{row.ToString()}-{column.ToString()}";
-        }
+        public bool IsLinkedTo( Cell other ) => _links.Contains( other );
     }
 }

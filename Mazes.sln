@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{57AC0E52-4F71-4D33-98AA-15EF506E92AD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{5D5CAFBF-338F-4068-A085-1F32AAE89CA5}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DD01F9B8-4455-4D8D-8E43-C32B35E105FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mazes.Structures", "src\Mazes.Structures\Mazes.Structures.csproj", "{AF7FF0C0-FF37-4602-8BFB-137AA4A94458}"

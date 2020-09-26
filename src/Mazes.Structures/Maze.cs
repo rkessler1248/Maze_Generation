@@ -1,46 +1,63 @@
-namespace Mazes.Structures {
-    public class Maze {
+namespace Mazes.Structures
+{
+    public class Maze
+    {
         private readonly Cell[ , ] _cells;
 
-        public Maze( int columns, int rows ) {
-            Columns = columns;
-            Rows = rows;
+        public readonly int NumberOfColumns;
+        public readonly int NumberOfRows;
 
-            _cells = new Cell[ Rows, Columns ];
+        public Maze( int rows, int columns )
+        {
+            NumberOfColumns = columns;
+            NumberOfRows = rows;
 
-            InitializeCells();
-            AssignNeighbors();
+            _cells = new Cell[ NumberOfRows, NumberOfColumns ];
+            
+            InitializeMazeCells( _cells );
+            InitializeMazeCellNeighbors( _cells );
         }
 
-        public int Columns { get; }
-        public int Rows { get; }
+        public Cell this[ in int row, in int column ] => _cells[ row, column ];
 
-        public Cell this[ int row, int column ] => _cells[ row, column ];
-
-        private void InitializeCells() {
-            for ( int row = 0; row < Rows; ++row )
-            for ( int column = 0; column < Columns; ++column ) {
-                _cells[ row, column ] = new Cell( row, column );
+        private void InitializeMazeCells( Cell[ , ] cells )
+        {
+            for ( int row = 0; row < NumberOfRows; ++row )
+            for ( int column = 0; column < NumberOfColumns; ++column )
+            {
+                cells[ row, column ] = new Cell( column, row );
             }
         }
 
-        private void AssignNeighbors() {
-            for ( int row = 0; row < Rows; ++row )
-            for ( int column = 0; column < Columns; ++column ) {
-                if ( row > 0 ) {
-                    _cells[ row, column ].MakeNeighbors( _cells[ row - 1, column ] );
+        private void InitializeMazeCellNeighbors( Cell[ , ] cells )
+        {
+            for ( int row = 0; row < NumberOfRows; ++row )
+            for ( int column = 0; column < NumberOfColumns; ++column )
+            {
+                Cell current = cells[ row, column ];
+
+                if ( row > 0 )
+                {
+                    Cell northern = cells[ row - 1, column ];
+                    current.SetNeighbor( northern );
                 }
 
-                if ( row < Rows - 1 ) {
-                    _cells[ row, column ].MakeNeighbors( _cells[ row + 1, column ] );
+                if ( row < NumberOfRows - 1 )
+                {
+                    Cell southern = cells[ row + 1, column ];
+                    current.SetNeighbor( southern );
                 }
 
-                if ( column > 0 ) {
-                    _cells[ row, column ].MakeNeighbors( _cells[ row, column - 1 ] );
+                if ( column > 0 )
+                {
+                    Cell western = cells[ row, column - 1 ];
+                    current.SetNeighbor( western );
                 }
 
-                if ( column < Columns - 1 ) {
-                    _cells[ row, column ].MakeNeighbors( _cells[ row, column + 1 ] );
+                if ( column < NumberOfColumns - 1 )
+                {
+                    Cell eastern = cells[ row, column + 1 ];
+                    current.SetNeighbor( eastern );
                 }
             }
         }

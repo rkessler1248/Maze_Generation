@@ -1,49 +1,51 @@
 using Xunit;
 
-namespace Mazes.Structures.Tests {
-    public class MazeTests {
+namespace Mazes.Structures.Tests
+{
+    public class MazeTests
+    {
         [Fact]
         [Trait( "Category", "Unit" )]
-        public void Test_2D_Orthogonal_Maze_Cells() {
-            Maze maze = new Maze( 4, 4 );
+        public void Test_Maze_Construction()
+        {
+            Maze maze = new Maze( 3, 4 );
 
-            Assert.Equal( 4, maze.Columns );
-            Assert.Equal( 4, maze.Rows );
+            Assert.Equal( 3, maze.NumberOfRows );
+            Assert.Equal( 4, maze.NumberOfColumns );
 
-            for ( int row = 0; row < maze.Rows; ++row )
-            for ( int column = 0; column < maze.Columns; ++column ) {
+            for ( int row = 0; row < maze.NumberOfRows; ++row )
+            for ( int column = 0; column < maze.NumberOfColumns; ++column )
+            {
                 Cell current = maze[ row, column ];
+                Assert.NotNull( current );
+
                 Assert.Equal( row, current.Row );
                 Assert.Equal( column, current.Column );
-            }
-        }
 
-        [Fact]
-        [Trait( "Category", "Unit" )]
-        public void Test_2D_Orthogonal_Maze_CellNeighbors() {
-            Maze maze = new Maze( 4, 4 );
+                Assert.Empty( current.Links() );
 
-            for ( int row = 0; row < maze.Rows; ++row )
-            for ( int column = 0; column < maze.Columns; ++column ) {
-                Cell current = maze[ row, column ];
-                if ( row > 0 ) {
-                    Cell neighbor = maze[ row - 1, column ];
-                    Assert.Equal( current.IsNeighborOf( neighbor ), neighbor.IsNeighborOf( current ) );
+                if ( row > 0 )
+                {
+                    Cell northern = maze[ row - 1, column ];
+                    Assert.True( current.IsNeighbor( northern ) );
                 }
 
-                if ( row < maze.Rows - 1 ) {
-                    Cell neighbor = maze[ row + 1, column ];
-                    Assert.Equal( current.IsNeighborOf( neighbor ), neighbor.IsNeighborOf( current ) );
+                if ( row < maze.NumberOfRows - 1 )
+                {
+                    Cell southern = maze[ row + 1, column ];
+                    Assert.True( current.IsNeighbor( southern ) );
                 }
 
-                if ( column > 0 ) {
-                    Cell neighbor = maze[ row, column - 1 ];
-                    Assert.Equal( current.IsNeighborOf( neighbor ), neighbor.IsNeighborOf( current ) );
+                if ( column > 0 )
+                {
+                    Cell western = maze[ row, column - 1 ];
+                    Assert.True( current.IsNeighbor( western ) );
                 }
 
-                if ( column < maze.Columns - 1 ) {
-                    Cell neighbor = maze[ row, column + 1 ];
-                    Assert.Equal( current.IsNeighborOf( neighbor ), neighbor.IsNeighborOf( current ) );
+                if ( column < maze.NumberOfColumns - 1 )
+                {
+                    Cell eastern = maze[ row, column + 1 ];
+                    Assert.True( current.IsNeighbor( eastern ) );
                 }
             }
         }
