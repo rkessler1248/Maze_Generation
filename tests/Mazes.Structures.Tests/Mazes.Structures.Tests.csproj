@@ -15,6 +15,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\Mazes.Structures\Mazes.Structures.csproj" />
+        <ProjectReference Include="..\Mazes.Tests.Utility\Mazes.Tests.Utility.csproj" />
     </ItemGroup>
 
 </Project>
