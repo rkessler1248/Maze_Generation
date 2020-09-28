@@ -1,14 +1,17 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Mazes.Structures
 {
     public class Distances
     {
+        private readonly Cell _root;
         private readonly IDictionary<Cell, int> _cells;
 
         private Distances( Cell root )
         {
-            _cells = new Dictionary<Cell, int> { { root, 0 } };
+            _root = root;
+            _cells = new Dictionary<Cell, int> { { _root, 0 } };
         }
 
         public int this[ Cell cell ]
@@ -16,7 +19,32 @@ namespace Mazes.Structures
             get => _cells.ContainsKey( cell ) ? _cells[ cell ] : -1;
             private set => _cells[ cell ] = value;
         }
-        
+
+        public Stack<Cell> ShortestPath( Cell destination )
+        {
+            Stack<Cell> result = new Stack<Cell>();
+            result.Push( destination );
+
+            Cell current = destination;
+
+            while ( _root != current )
+            {
+                Cell candidate = current.Links().First();
+                foreach ( Cell link in current.Links() )
+                {
+                    if ( this[ link ] < this[ candidate ] )
+                    {
+                        candidate = link;
+                    }
+                }
+
+                result.Push( candidate );
+                current = candidate;
+            }
+
+            return result;
+        }
+
         public static Distances CalculateDijkstra( Cell root )
         {
             Distances result = new Distances( root );
