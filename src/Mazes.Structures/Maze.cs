@@ -6,14 +6,16 @@ namespace Mazes.Structures
 
         public readonly int NumberOfColumns;
         public readonly int NumberOfRows;
+        public readonly long Size;
 
         public Maze( int rows, int columns )
         {
-            NumberOfColumns = columns;
             NumberOfRows = rows;
+            NumberOfColumns = columns;
+            Size = NumberOfRows * NumberOfColumns;
 
             _cells = new Cell[ NumberOfRows, NumberOfColumns ];
-            
+
             InitializeMazeCells( _cells );
             InitializeMazeCellNeighbors( _cells );
         }

@@ -6,7 +6,7 @@ namespace Mazes.Creation
 {
     public class SidewinderCreator
     {
-        private readonly Random _random = new Random( DateTime.UtcNow.Millisecond );
+        private readonly Random _random = new Random( ( int ) DateTime.UtcNow.Ticks );
 
         public void Carve( Maze maze )
         {

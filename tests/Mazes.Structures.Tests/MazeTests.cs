@@ -12,6 +12,7 @@ namespace Mazes.Structures.Tests
 
             Assert.Equal( 3, maze.NumberOfRows );
             Assert.Equal( 4, maze.NumberOfColumns );
+            Assert.Equal( 12, maze.Size );
 
             for ( int row = 0; row < maze.NumberOfRows; ++row )
             for ( int column = 0; column < maze.NumberOfColumns; ++column )
