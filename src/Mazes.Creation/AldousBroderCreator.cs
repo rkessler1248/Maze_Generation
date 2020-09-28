@@ -15,7 +15,7 @@ namespace Mazes.Creation
             Cell current = Random( maze );
             while ( unvisited > 0 )
             {
-                Cell candidate = Random( current.Neighbors() );
+                Cell candidate = Random( current.Neighbors );
                 if ( LinkToCurrent( candidate ) )
                 {
                     candidate.LinkTo( current );
@@ -28,7 +28,7 @@ namespace Mazes.Creation
 
         public bool LinkToCurrent( Cell candidate )
         {
-            return candidate.Links().Count == 0;
+            return candidate.Links.Count == 0;
         }
 
         private Cell Random( Maze maze )

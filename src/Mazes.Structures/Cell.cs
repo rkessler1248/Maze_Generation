@@ -17,8 +17,8 @@ namespace Mazes.Structures
         public int Column => _coordinates[ 0 ];
         public int Row => _coordinates[ 1 ];
 
-        public IReadOnlyCollection<Cell> Links() => _links;
-        public IReadOnlyCollection<Cell> Neighbors() => _neighbors;
+        public IReadOnlyCollection<Cell> Links => _links;
+        public IReadOnlyCollection<Cell> Neighbors => _neighbors;
 
         public void SetNeighbor( Cell other )
         {

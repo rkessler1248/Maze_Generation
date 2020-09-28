@@ -23,7 +23,7 @@ namespace Mazes.Structures.Tests
                 Assert.Equal( row, current.Row );
                 Assert.Equal( column, current.Column );
 
-                Assert.Empty( current.Links() );
+                Assert.Empty( current.Links );
 
                 if ( row > 0 )
                 {

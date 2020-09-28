@@ -52,7 +52,7 @@ namespace Mazes.Creation.Tests
                 for ( int row = 0; row < maze.NumberOfRows; ++row )
                 for ( int column = 0; column < maze.NumberOfColumns; ++column )
                 {
-                    Assert.NotEmpty( maze[ row, column ].Links() );
+                    Assert.NotEmpty( maze[ row, column ].Links );
                 }
             }
         }

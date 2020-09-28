@@ -29,8 +29,8 @@ namespace Mazes.Structures
 
             while ( _root != current )
             {
-                Cell candidate = current.Links().First();
-                foreach ( Cell link in current.Links() )
+                Cell candidate = current.Links.First();
+                foreach ( Cell link in current.Links )
                 {
                     if ( this[ link ] < this[ candidate ] )
                     {
@@ -55,7 +55,7 @@ namespace Mazes.Structures
             while ( frontier.Count > 0 )
             {
                 Cell current = frontier.Dequeue();
-                foreach ( Cell link in current.Links() )
+                foreach ( Cell link in current.Links )
                 {
                     if ( result[ link ] == -1 )
                     {
