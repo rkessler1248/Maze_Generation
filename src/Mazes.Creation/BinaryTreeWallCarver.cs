@@ -1,13 +1,10 @@
-using System;
 using Mazes.Structures;
 
 namespace Mazes.Creation
 {
-    public class BinaryTreeCreator
+    public class BinaryTreeWallCarver : WallCarver
     {
-        private readonly Random _random = new Random( ( int ) DateTime.UtcNow.Ticks );
-
-        public void Carve( Maze maze )
+        public override void Carve( Maze maze )
         {
             for ( int row = 0; row < maze.NumberOfRows; ++row )
             for ( int column = 0; column < maze.NumberOfColumns; ++column )
@@ -37,7 +34,7 @@ namespace Mazes.Creation
             }
             else
             {
-                result = _random.Next( 0, 2 ) == 0 ? maze[ row + 1, column ] : maze[ row, column + 1 ];
+                result = RNG.Next( 0, 2 ) == 0 ? maze[ row + 1, column ] : maze[ row, column + 1 ];
             }
 
             return result;

@@ -1,14 +1,11 @@
-using System;
 using System.Collections.Generic;
 using Mazes.Structures;
 
 namespace Mazes.Creation
 {
-    public class SidewinderCreator
+    public class SidewinderWallCarver : WallCarver
     {
-        private readonly Random _random = new Random( ( int ) DateTime.UtcNow.Ticks );
-
-        public void Carve( Maze maze )
+        public override void Carve( Maze maze )
         {
             IList<Cell> run = new List<Cell>();
 
@@ -25,7 +22,7 @@ namespace Mazes.Creation
                 {
                     if ( row != maze.NumberOfRows - 1 )
                     {
-                        Cell link = run[ _random.Next( 0, run.Count ) ];
+                        Cell link = run[ RNG.Next( 0, run.Count ) ];
                         link.LinkTo( maze[ link.Row + 1, link.Column ] );
                     }
 
@@ -51,7 +48,7 @@ namespace Mazes.Creation
             }
             else
             {
-                result = _random.Next( 0, 2 ) == 0;
+                result = RNG.Next( 0, 2 ) == 0;
             }
 
             return result;

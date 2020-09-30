@@ -4,31 +4,31 @@ using Xunit;
 
 namespace Mazes.Creation.Tests
 {
-    public class AldousBroderCreatorTests
+    public class AldousBroderWallCarverTests
     {
         [Fact]
         [Trait( "Category", "Unit" )]
-        public void Test_AldousBroderCreator_LinkToCurrent()
+        public void Test_AldousBroderWallCarver_LinkToCurrent()
         {
-            AldousBroderCreator creator = new AldousBroderCreator();
+            AldousBroderWallCarver carver = new AldousBroderWallCarver();
 
             Cell cell1 = new Cell( 0, 0 );
-            Assert.True( creator.LinkToCurrent( cell1 ) );
+            Assert.True( carver.LinkToCurrent( cell1 ) );
 
             Cell cell2 = new Cell( 0, 1 );
             cell1.LinkTo( cell2 );
             
-            Assert.False( creator.LinkToCurrent( cell1 ) );
-            Assert.False( creator.LinkToCurrent( cell2 ) );
+            Assert.False( carver.LinkToCurrent( cell1 ) );
+            Assert.False( carver.LinkToCurrent( cell2 ) );
         }
 
         [Fact]
         [Trait( "Category", "Unit" )]
-        public void Test_AldousBroderCreator_Carve()
+        public void Test_AldousBroderWallCarver_Carve()
         {
             const int certaintyIterations = 10_000;
 
-            AldousBroderCreator creator = new AldousBroderCreator();
+            AldousBroderWallCarver carver = new AldousBroderWallCarver();
 
             for ( int i = 0; i < certaintyIterations; ++i )
             {
@@ -36,7 +36,7 @@ namespace Mazes.Creation.Tests
 
                 try
                 {
-                    creator.Carve( maze );
+                    carver.Carve( maze );
                 }
                 catch ( Exception ex )
                 {

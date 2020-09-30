@@ -1,15 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Mazes.Structures;
 
 namespace Mazes.Creation
 {
-    public class AldousBroderCreator
+    public class AldousBroderWallCarver : WallCarver
     {
-        private readonly Random _random = new Random( ( int ) DateTime.UtcNow.Ticks );
-
-        public void Carve( Maze maze )
+        public override void Carve( Maze maze )
         {
             long unvisited = maze.Size - 1;
             Cell current = Random( maze );
@@ -33,12 +30,12 @@ namespace Mazes.Creation
 
         private Cell Random( Maze maze )
         {
-            return maze[ _random.Next( 0, maze.NumberOfRows ), _random.Next( 0, maze.NumberOfColumns ) ];
+            return maze[ RNG.Next( 0, maze.NumberOfRows ), RNG.Next( 0, maze.NumberOfColumns ) ];
         }
 
         private Cell Random( IReadOnlyCollection<Cell> cells )
         {
-            return cells.ElementAt( _random.Next( 0, cells.Count ) );
+            return cells.ElementAt( RNG.Next( 0, cells.Count ) );
         }
     }
 }
