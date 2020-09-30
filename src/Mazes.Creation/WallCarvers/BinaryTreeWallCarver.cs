@@ -1,6 +1,6 @@
 using Mazes.Structures;
 
-namespace Mazes.Creation
+namespace Mazes.Creation.WallCarvers
 {
     public class BinaryTreeWallCarver : WallCarver
     {
@@ -34,7 +34,7 @@ namespace Mazes.Creation
             }
             else
             {
-                result = RNG.Next( 0, 2 ) == 0 ? maze[ row + 1, column ] : maze[ row, column + 1 ];
+                result = Random( maze[ row + 1, column ], maze[ row, column + 1 ] );
             }
 
             return result;

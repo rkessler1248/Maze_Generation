@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Mazes.Creation.WallCarvers;
 using Mazes.Structures;
 using Xunit;
 
@@ -82,7 +83,7 @@ namespace Mazes.Creation.Tests
                 {
                     Assert.True( false, $"Creator threw exception: {ex}" );
                 }
-                
+
                 for ( int row = 0; row < maze.NumberOfRows; ++row )
                 for ( int column = 0; column < maze.NumberOfColumns; ++column )
                 {

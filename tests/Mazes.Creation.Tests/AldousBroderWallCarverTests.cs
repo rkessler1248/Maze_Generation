@@ -1,4 +1,5 @@
 using System;
+using Mazes.Creation.WallCarvers;
 using Mazes.Structures;
 using Xunit;
 
@@ -8,18 +9,18 @@ namespace Mazes.Creation.Tests
     {
         [Fact]
         [Trait( "Category", "Unit" )]
-        public void Test_AldousBroderWallCarver_LinkToCurrent()
+        public void Test_AldousBroderWallCarver_ShouldLinkToCurrent()
         {
             AldousBroderWallCarver carver = new AldousBroderWallCarver();
 
             Cell cell1 = new Cell( 0, 0 );
-            Assert.True( carver.LinkToCurrent( cell1 ) );
+            Assert.True( carver.ShouldLinkToCurrent( cell1 ) );
 
             Cell cell2 = new Cell( 0, 1 );
             cell1.LinkTo( cell2 );
-            
-            Assert.False( carver.LinkToCurrent( cell1 ) );
-            Assert.False( carver.LinkToCurrent( cell2 ) );
+
+            Assert.False( carver.ShouldLinkToCurrent( cell1 ) );
+            Assert.False( carver.ShouldLinkToCurrent( cell2 ) );
         }
 
         [Fact]

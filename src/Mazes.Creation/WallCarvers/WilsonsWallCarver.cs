@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Mazes.Structures;
 
-namespace Mazes.Creation
+namespace Mazes.Creation.WallCarvers
 {
     public class WilsonsWallCarver : WallCarver
     {
@@ -10,7 +10,7 @@ namespace Mazes.Creation
         {
             ISet<Cell> unvisited = InitializeUnvisited( maze );
             ISet<Cell> visited = new HashSet<Cell> { Random( unvisited, unvisited.Count ) };
-            
+
             unvisited.Remove( visited.First() );
 
             Stack<Cell> path = new Stack<Cell>();
@@ -78,11 +78,6 @@ namespace Mazes.Creation
             }
 
             return result;
-        }
-
-        private Cell Random( IEnumerable<Cell> unvisited, int elements )
-        {
-            return unvisited.ElementAt( RNG.Next( 0, elements ) );
         }
     }
 }

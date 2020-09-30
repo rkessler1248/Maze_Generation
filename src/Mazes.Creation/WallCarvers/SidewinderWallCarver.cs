@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Mazes.Structures;
 
-namespace Mazes.Creation
+namespace Mazes.Creation.WallCarvers
 {
     public class SidewinderWallCarver : WallCarver
     {
@@ -13,7 +13,7 @@ namespace Mazes.Creation
             for ( int column = 0; column < maze.NumberOfColumns; ++column )
             {
                 run.Add( maze[ row, column ] );
-                
+
                 if ( ContinueRun( maze, row, column ) )
                 {
                     maze[ row, column ].LinkTo( maze[ row, column + 1 ] );
@@ -22,7 +22,7 @@ namespace Mazes.Creation
                 {
                     if ( row != maze.NumberOfRows - 1 )
                     {
-                        Cell link = run[ RNG.Next( 0, run.Count ) ];
+                        Cell link = Random( run, run.Count );
                         link.LinkTo( maze[ link.Row + 1, link.Column ] );
                     }
 

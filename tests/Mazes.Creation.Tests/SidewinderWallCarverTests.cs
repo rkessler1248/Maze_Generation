@@ -1,4 +1,5 @@
 using System;
+using Mazes.Creation.WallCarvers;
 using Mazes.Structures;
 using Xunit;
 
@@ -33,9 +34,9 @@ namespace Mazes.Creation.Tests
         public void Test_SidewinderWallCarver_Carve()
         {
             const int certaintyIterations = 10_000;
-            
+
             SidewinderWallCarver carver = new SidewinderWallCarver();
-            
+
             for ( int i = 0; i < certaintyIterations; ++i )
             {
                 Maze maze = new Maze( 5, 5 );
@@ -48,7 +49,7 @@ namespace Mazes.Creation.Tests
                 {
                     Assert.True( false, $"Creator threw exception: {ex}" );
                 }
-                
+
                 for ( int row = 0; row < maze.NumberOfRows; ++row )
                 for ( int column = 0; column < maze.NumberOfColumns; ++column )
                 {

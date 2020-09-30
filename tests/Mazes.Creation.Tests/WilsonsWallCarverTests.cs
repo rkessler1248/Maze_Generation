@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Mazes.Creation.WallCarvers;
 using Mazes.Structures;
 using Xunit;
 
@@ -107,7 +108,7 @@ namespace Mazes.Creation.Tests
             Assert.Contains( maze[ 0, 0 ], visited );
             Assert.Contains( maze[ 0, 1 ], visited );
             Assert.Contains( maze[ 0, 2 ], visited );
-            
+
             Assert.Equal( 6, unvisited.Count );
             Assert.DoesNotContain( maze[ 0, 0 ], unvisited );
             Assert.DoesNotContain( maze[ 0, 1 ], unvisited );
