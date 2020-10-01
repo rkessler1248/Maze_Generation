@@ -4,7 +4,7 @@ namespace Mazes.Structures
 {
     public class Maze
     {
-        private readonly Cell[ , ] _cells;
+        protected readonly Cell[ , ] Cells;
 
         public readonly int NumberOfColumns;
         public readonly int NumberOfRows;
@@ -16,13 +16,22 @@ namespace Mazes.Structures
             NumberOfColumns = columns;
             Size = NumberOfRows * NumberOfColumns;
 
-            _cells = new Cell[ NumberOfRows, NumberOfColumns ];
+            Cells = new Cell[ NumberOfRows, NumberOfColumns ];
 
-            InitializeMazeCells( _cells );
-            InitializeMazeCellNeighbors( _cells );
+            InitializeMazeCells( Cells );
+            InitializeMazeCellNeighbors( Cells );
         }
 
-        public Cell this[ in int row, in int column ] => _cells[ row, column ];
+        protected Maze( int rows, int columns, long size )
+        {
+            NumberOfRows = rows;
+            NumberOfColumns = columns;
+            Size = size;
+
+            Cells = new Cell[ NumberOfRows, NumberOfColumns ];
+        }
+
+        public Cell this[ in int row, in int column ] => Cells[ row, column ];
 
         public IReadOnlyCollection<Cell> DeadEnds()
         {
@@ -31,9 +40,9 @@ namespace Mazes.Structures
             for ( int row = 0; row < NumberOfRows; ++row )
             for ( int column = 0; column < NumberOfColumns; ++column )
             {
-                if ( _cells[ row, column ].Links.Count == 1 )
+                if ( Cells[ row, column ].Links.Count == 1 )
                 {
-                    result.Add( _cells[ row, column ] );
+                    result.Add( Cells[ row, column ] );
                 }
             }
 

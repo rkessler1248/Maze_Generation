@@ -13,8 +13,19 @@ namespace Mazes.Creation
 
         protected Cell Random( IEnumerable<Cell> set, int elements ) => set.ElementAtOrDefault( RNG.Next( 0, elements ) );
 
-        protected Cell Random( Maze maze ) => maze[ RNG.Next( 0, maze.NumberOfRows ), RNG.Next( 0, maze.NumberOfColumns ) ];
+        protected Cell Random( Maze maze ) => maze is MaskedMaze masked ? Random( masked ) : maze[ RNG.Next( 0, maze.NumberOfRows ), RNG.Next( 0, maze.NumberOfColumns ) ];
 
         protected bool Visited( Cell cell ) => cell.Links.Count > 0;
+
+        private Cell Random( MaskedMaze maze )
+        {
+            Cell result;
+            do
+            {
+                result = maze[ RNG.Next( 0, maze.NumberOfRows ), RNG.Next( 0, maze.NumberOfColumns ) ];
+            } while ( result is null );
+
+            return result;
+        }
     }
 }

@@ -52,7 +52,7 @@ namespace Mazes.Creation.Tests
 
         [Fact]
         [Trait( "Category", "Unit" )]
-        public void Test_HuntAndKillWallCarver_Carve()
+        public void Test_RecursiveBacktrackerWallCarver_Carve()
         {
             const int certaintyIterations = 10_000;
 
