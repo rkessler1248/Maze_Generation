@@ -1,3 +1,4 @@
+using Mazes.Tests.Utility;
 using Xunit;
 
 namespace Mazes.Structures.Tests
@@ -49,6 +50,14 @@ namespace Mazes.Structures.Tests
                     Assert.True( current.IsNeighbor( eastern ) );
                 }
             }
+        }
+
+        [Fact]
+        [Trait( "Category", "Unit" )]
+        public void Test_Maze_DeadEnds()
+        {
+            Assert.Equal( 0, new Maze( 3, 3 ).DeadEnds().Count );
+            Assert.Equal( 8, TestMaze.Generate().DeadEnds().Count );
         }
     }
 }

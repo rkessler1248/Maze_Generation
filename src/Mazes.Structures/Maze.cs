@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Mazes.Structures
 {
     public class Maze
@@ -21,6 +23,22 @@ namespace Mazes.Structures
         }
 
         public Cell this[ in int row, in int column ] => _cells[ row, column ];
+
+        public IReadOnlyCollection<Cell> DeadEnds()
+        {
+            HashSet<Cell> result = new HashSet<Cell>();
+
+            for ( int row = 0; row < NumberOfRows; ++row )
+            for ( int column = 0; column < NumberOfColumns; ++column )
+            {
+                if ( _cells[ row, column ].Links.Count == 1 )
+                {
+                    result.Add( _cells[ row, column ] );
+                }
+            }
+
+            return result;
+        }
 
         private void InitializeMazeCells( Cell[ , ] cells )
         {
