@@ -1,4 +1,4 @@
-namespace Mazes.Utility
+namespace Mazes.Creation.Utility
 {
     public interface IRandomNumberGenerator
     {

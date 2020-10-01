@@ -1,6 +1,6 @@
 using System;
 
-namespace Mazes.Utility
+namespace Mazes.Creation.Utility
 {
     public class BasicRandomNumberGenerator : IRandomNumberGenerator
     {

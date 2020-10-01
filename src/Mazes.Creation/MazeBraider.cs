@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Mazes.Creation.Utility;
 using Mazes.Structures;
-using Mazes.Utility;
 
 namespace Mazes.Creation
 {
