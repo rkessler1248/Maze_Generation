@@ -5,7 +5,7 @@ using Mazes.Structures;
 using Mazes.Tests.Utility;
 using Xunit;
 
-namespace Mazes.Creation.Tests
+namespace Mazes.Creation.Tests.WallCarvers
 {
     public class RecursiveBacktrackerWallCarverTests
     {
@@ -43,10 +43,10 @@ namespace Mazes.Creation.Tests
         {
             Maze maze = TestMaze.Generate();
             RecursiveBacktrackerWallCarver carver = new RecursiveBacktrackerWallCarver();
-            
+
             Stack<Cell> path = Distances.CalculateDijkstra( maze[ 0, 0 ] ).ShortestPath( maze[ 4, 4 ] );
             carver.Backtrack( path );
-            
+
             Assert.Empty( path );
         }
 

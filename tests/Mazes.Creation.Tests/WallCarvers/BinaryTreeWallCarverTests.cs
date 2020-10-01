@@ -4,7 +4,7 @@ using Mazes.Creation.WallCarvers;
 using Mazes.Structures;
 using Xunit;
 
-namespace Mazes.Creation.Tests
+namespace Mazes.Creation.Tests.WallCarvers
 {
     public class BinaryTreeWallCarverTests
     {
