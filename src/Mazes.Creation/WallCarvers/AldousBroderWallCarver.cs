@@ -21,9 +21,6 @@ namespace Mazes.Creation.WallCarvers
             }
         }
 
-        public bool ShouldLinkToCurrent( Cell candidate )
-        {
-            return candidate.Links.Count == 0;
-        }
+        public bool ShouldLinkToCurrent( Cell candidate ) => !Visited( candidate );
     }
 }

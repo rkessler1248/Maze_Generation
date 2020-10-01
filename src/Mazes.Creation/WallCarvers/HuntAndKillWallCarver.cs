@@ -45,7 +45,5 @@ namespace Mazes.Creation.WallCarvers
 
             return null;
         }
-
-        public bool Visited( Cell cell ) => cell.Links.Count > 0;
     }
 }

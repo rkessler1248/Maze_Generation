@@ -9,30 +9,6 @@ namespace Mazes.Creation.Tests
     {
         [Fact]
         [Trait( "Category", "Unit" )]
-        public void Test_HuntAndKillWallCarver_Hunt_Visited()
-        {
-            Maze maze = new Maze( 3, 3 );
-            HuntAndKillWallCarver carver = new HuntAndKillWallCarver();
-
-            maze[ 0, 0 ].LinkTo( maze[ 1, 0 ] );
-
-
-            for ( int row = 0; row < maze.NumberOfRows; ++row )
-            for ( int column = 0; column < maze.NumberOfColumns; ++column )
-            {
-                if ( 0 == column && ( 0 == row || 1 == row ) )
-                {
-                    Assert.True( carver.Visited( maze[ row, column ] ) );
-                }
-                else
-                {
-                    Assert.False( carver.Visited( maze[ row, column ] ) );
-                }
-            }
-        }
-
-        [Fact]
-        [Trait( "Category", "Unit" )]
         public void Test_HuntAndKillWallCarver_Hunt_ViableCandidate()
         {
             Maze maze = new Maze( 3, 3 );
