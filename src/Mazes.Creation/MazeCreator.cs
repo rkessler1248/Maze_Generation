@@ -1,13 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Mazes.Structures;
+using Mazes.Utility;
 
 namespace Mazes.Creation
 {
     public abstract class MazeCreator
     {
-        protected readonly Random RNG = new Random( ( int ) DateTime.UtcNow.Ticks );
+        protected readonly IRandomNumberGenerator RNG = new BasicRandomNumberGenerator();
 
         protected Cell Random( Cell cell1, Cell cell2 ) => RNG.Next( 0, 2 ) == 0 ? cell1 : cell2;
 
@@ -15,7 +15,7 @@ namespace Mazes.Creation
 
         protected Cell Random( Maze maze ) => maze is MaskedMaze masked ? Random( masked ) : maze[ RNG.Next( 0, maze.NumberOfRows ), RNG.Next( 0, maze.NumberOfColumns ) ];
 
-        protected bool Visited( Cell cell ) => cell.Links.Count > 0;
+        protected abstract bool Visited( Cell cell );
 
         private Cell Random( MaskedMaze maze )
         {

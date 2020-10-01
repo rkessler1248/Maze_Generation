@@ -2,18 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Mazes.Structures;
+using Mazes.Utility;
 
 namespace Mazes.Creation
 {
     public class MazeBraider
     {
-        private readonly Random _random = new Random( ( int ) DateTime.UtcNow.Ticks );
+        private readonly IRandomNumberGenerator _random = new BasicRandomNumberGenerator();
 
         public void Braid( Maze maze, float braidPercent )
         {
             IList<Cell> deadEnds = maze.DeadEnds().ToList();
             Shuffle( deadEnds );
-            
+
             int braidCount = ( int ) Math.Round( deadEnds.Count * braidPercent );
             for ( int i = 0; i < braidCount; ++i )
             {

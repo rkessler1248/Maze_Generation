@@ -6,6 +6,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Mazes.Structures\Mazes.Structures.csproj" />
+      <ProjectReference Include="..\Mazes.Utility\Mazes.Utility.csproj" />
     </ItemGroup>
 
 </Project>

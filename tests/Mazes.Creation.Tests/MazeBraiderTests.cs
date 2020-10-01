@@ -17,7 +17,7 @@ namespace Mazes.Creation.Tests
                 Maze maze = TestMaze.Generate();
                 MazeBraider braider = new MazeBraider();
                 braider.Braid( maze, values[ i ].BraidPercent );
-                Assert.Equal( values[ i ].ExpectedCount, maze.DeadEnds().Count );
+                Assert.True( values[ i ].ExpectedCount >= maze.DeadEnds().Count );
             }
         }
     }
